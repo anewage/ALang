@@ -4,44 +4,75 @@
 
 %%
 
+%{
+    public static void echoFinding(String text, String desc) throws java.io.IOException{
+        java.io.FileWriter fw = new java.io.FileWriter("src/output.txt", true);
+        java.io.BufferedWriter bw = new java.io.BufferedWriter(fw);
+        String msg = text + "\t\t" + desc + "\t\t-";
+        System.out.println(msg);
+        bw.write("\n"+msg);
+        bw.close();
+    }
+%}
+
 /*
     DECLARATION SECTION
 */
 
 LETTER = [a-zA-Z]
 DIGIT = [0-9]
+HARF = "'"[a-zA-Z0-9]"'"
 
 SHENASE = "#"{LETTER}{LETTER}{DIGIT}{DIGIT}{DIGIT}
+ADADSABET = {DIGIT}+
+REALCONST = {ADADSABET}"\."{ADADSABET}
+BOOLSABET = "true"|"false"
 
 WHITESPACE = [ \n\r\t]
 COMMENTS = "//".*
-
-
-
-ADADSABET = {DIGIT}+
-REALCONST = {ADADSABET}"\."{ADADSABET}
-HARF = "'"[a-zA-Z0-9]"'"
-BOOLSABET = "true"|"false"
-
+PUNCT = [(),;:]
+PLUS = [+]
+MINUS = [-]
+MULTP = [*]
+DIVIDE = [/]
+MOD = [%]
+BLOCK_START = (\{)
+BLOCK_END = (\})
+RANGE_START = (\[)
+RANGE_END = (\])
+NEQ_KW = (<>)
+GT_KW = (>)
+GTE_KW = (>=)
+LT_KW = (<)
+LTE_KW = (<=)
+EQ_KW = (=)
+ASSIGN_KW = (:=)
 INT_KW = (int)
 FLOAT_KW = (float)
 CHAR_KW = (char)
 BOOLEAN_KW = (boolean)
-
-IF_KW = (if)
-ELSE_KW = (else)
-SWITCH_KW = (switch)
-CASE_KW = (case)
-END_KW = (end)
-DEFAULT_KW = (default)
+PROGRAM_KW = (program)
+AGAR_KW = (agar)
+ANGAH_KW = (angah)
+VAGARNA_KW = (vagarna)
+DO_KW = (do)
 WHILE_KW = (while)
-RETURN_KW = (return)
-BREAK_KW = (break)
-OR_KW = (or)
-OR_ELSE_KW = "or else"
-AND_KW = "and"
-AND_THEN_KW = "and then"
-NOT_KW = (not)
+FOR_KW = (for)
+GOZINESH_KW = (gozinesh)
+MORED_KW = (mored)
+END_KW = (end)
+EXIT_KW = (exit)
+WHEN_KW = (when)
+DEFAULT_KW = (default)
+UPTO_KW = (upto)
+DOWNTO_KW = (downto)
+VA_KW = (va)
+YA_KW = (ya)
+VAANGAH_KW = "va angah"
+YAVAGARNA_KW = "ya vagarna"
+RAVIE_KW = (ravie)
+NAGHIZ_KW = (naghiz)
+BAZGASHT_KW = (bazgasht)
 
 %%
 
@@ -49,13 +80,55 @@ NOT_KW = (not)
     RULES
 */
 
-{COMMENTS} {System.out.println(yytext() + "\t\tComments\t\t-");}
-
-{REALCONST} {System.out.println(yytext() + "\t\tREALCONST\t\t-");}
-{ADADSABET} {System.out.println(yytext() + "\t\tADADSABET\t\t-");}
-{BOOLSABET} {System.out.println(yytext() + "\t\tBOOLSABET\t\t-");}
-{HARF} {System.out.println(yytext() + "\t\tHARF\t\t-");}
-
-{SHENASE} {System.out.println(yytext() + "\t\tSHENASE\t\t" );}
+{SHENASE} {echoFinding(yytext(), "SHENASE");}
+{HARF} {echoFinding(yytext(), "HARF");}
+{ADADSABET} {echoFinding(yytext(), "ADADSABET");}
+{REALCONST} {echoFinding(yytext(), "REALCONST");}
+{BOOLSABET} {echoFinding(yytext(), "BOOLSABET");}
+{COMMENTS} {echoFinding(yytext(), "COMMENTS");}
+{PUNCT} {echoFinding(yytext(), "PUNCT");}
+{PLUS} {echoFinding(yytext(), "PLUS");}
+{MINUS} {echoFinding(yytext(), "MINUS");}
+{MULTP} {echoFinding(yytext(), "MULTP");}
+{DIVIDE} {echoFinding(yytext(), "DIVIDE");}
+{MOD} {echoFinding(yytext(), "MOD");}
+{BLOCK_START} {echoFinding(yytext(), "BLOCK_START");}
+{BLOCK_END} {echoFinding(yytext(), "BLOCK_END");}
+{RANGE_START} {echoFinding(yytext(), "RANGE_START");}
+{RANGE_END} {echoFinding(yytext(), "RANGE_END");}
+{NEQ_KW} {echoFinding(yytext(), "NEQ_KW");}
+{GT_KW} {echoFinding(yytext(), "GT_KW");}
+{GTE_KW} {echoFinding(yytext(), "GTE_KW");}
+{LT_KW} {echoFinding(yytext(), "LT_KW");}
+{LTE_KW} {echoFinding(yytext(), "LTE_KW");}
+{EQ_KW} {echoFinding(yytext(), "EQ_KW");}
+{ASSIGN_KW} {echoFinding(yytext(), "ASSIGN_KW");}
+{INT_KW} {echoFinding(yytext(), "INT_KW");}
+{FLOAT_KW} {echoFinding(yytext(), "FLOAT_KW");}
+{CHAR_KW} {echoFinding(yytext(), "CHAR_KW");}
+{BOOLEAN_KW} {echoFinding(yytext(), "BOOLEAN_KW");}
+{PROGRAM_KW} {echoFinding(yytext(), "PROGRAM_KW");}
+{AGAR_KW} {echoFinding(yytext(), "AGAR_KW");}
+{ANGAH_KW} {echoFinding(yytext(), "ANGAH_KW");}
+{VAGARNA_KW} {echoFinding(yytext(), "VAGARNA_KW");}
+{DO_KW} {echoFinding(yytext(), "DO_KW");}
+{WHILE_KW} {echoFinding(yytext(), "WHILE_KW");}
+{FOR_KW} {echoFinding(yytext(), "FOR_KW");}
+{GOZINESH_KW} {echoFinding(yytext(), "GOZINESH_KW");}
+{MORED_KW} {echoFinding(yytext(), "MORED_KW");}
+{END_KW} {echoFinding(yytext(), "END_KW");}
+{EXIT_KW} {echoFinding(yytext(), "EXIT_KW");}
+{WHEN_KW} {echoFinding(yytext(), "WHEN_KW");}
+{DEFAULT_KW} {echoFinding(yytext(), "DEFAULT_KW");}
+{UPTO_KW} {echoFinding(yytext(), "UPTO_KW");}
+{DOWNTO_KW} {echoFinding(yytext(), "DOWNTO_KW");}
+{VA_KW} {echoFinding(yytext(), "VA_KW");}
+{YA_KW} {echoFinding(yytext(), "YA_KW");}
+{VAANGAH_KW} {echoFinding(yytext(), "VAANGAH_KW");}
+{YAVAGARNA_KW} {echoFinding(yytext(), "YAVAGARNA_KW");}
+{RAVIE_KW} {echoFinding(yytext(), "RAVIE_KW");}
+{NAGHIZ_KW} {echoFinding(yytext(), "NAGHIZ_KW");}
+{BAZGASHT_KW} {echoFinding(yytext(), "BAZGASHT_KW");}
+{COMMENTS} {echoFinding(yytext(), "COMMENTS");}
 {WHITESPACE} {}
 . {}
