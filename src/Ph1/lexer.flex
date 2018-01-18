@@ -1,17 +1,22 @@
 /*
     CODE SECTION
 */
+package Ph1;
 
 %%
 
 %{
     public static void echoFinding(String text, String desc) throws java.io.IOException{
-        java.io.FileWriter fw = new java.io.FileWriter("src/output.txt", true);
-        java.io.BufferedWriter bw = new java.io.BufferedWriter(fw);
+        java.io.FileWriter fw1 = new java.io.FileWriter("./src/Ph1/output.txt", true);
+        java.io.FileWriter fw2 = new java.io.FileWriter("./src/lexemes.txt", true);
+        java.io.BufferedWriter bw1 = new java.io.BufferedWriter(fw1);
+        java.io.BufferedWriter bw2 = new java.io.BufferedWriter(fw2);
         String msg = text + "\t\t" + desc + "\t\t-";
         System.out.println(msg);
-        bw.write("\n"+msg);
-        bw.close();
+        bw1.write("\n"+msg);
+        bw2.write("\n"+msg);
+        bw1.close();
+        bw2.close();
     }
 %}
 
