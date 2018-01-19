@@ -5,7 +5,7 @@
 /* The Start Symbol of the Grammar */
 %start program
 
-/* The tokens */
+/* Tokens */
 %token SHENASE
 %token HARF
 %token ADADSABET
@@ -20,7 +20,6 @@
 %token DOT_KW
 %token LP_KW
 %token RP_KW
-%token COMMA_KW
 %token PLUS
 %token MINUS
 %token MULTP
@@ -42,6 +41,7 @@
 %token CHAR_KW
 %token BOOLEAN_KW
 %token PROGRAM_KW
+%token MAIN_KW
 %token AGAR_KW
 %token ANGAH_KW
 %token VAGARNA_KW
@@ -63,415 +63,427 @@
 %token RAVIE_KW
 %token NAGHIZ_KW
 %token BAZGASHT_KW
-%token COMMENTS
 %token WHITESPACE
 
-%code {
-    static PrintStream writer;
-
-    public static void main(String args[]) throws IOException, FileNotFoundException {
-        YYParser yyparser;
-        final Yylex lexer;
-
-        writer = new PrintStream(new File("output.txt"));
-        lexer = new Yylex(new InputStreamReader(new FileInputStream(".\\files\\Code.shl")));
-
-        yyparser = new YYParser(new Lexer() {
-
-            @Override
-            public int yylex() {
-                int yyl_return = -1;
-                try {
-
-                    yyl_return = lexer.yylex();
-                } catch (IOException e) {
-                    System.err.println("IO error :" + e);
-                }
-                return yyl_return;
-            }
-
-            @Override
-            public void yyerror(String error) {
-                System.err.println("Error : " + error);
-            }
-
-            @Override
-            public Object getLVal() {
-                return null;
-            }
-        });
-        yyparser.parse();
-
-        return;
-    }
-}
-
-%left OR_KW OR_ELSE_KW
-%left AND_KW AND_THEN_KW
-%left EQ_KW NE_KW LE_KW LT_KW GE_KW GT_KW
-%left ADD_KW SUB_KW
-%left MUL_KW DIV_KW MOD_KW
-%right NOT_KW usub
+%left YA_KW YAVAGARNA_KW
+%left VA_KW VAANGAH_KW
+%left EQ_KW NEQ_KW LTE_KW LT_KW GTE_KW GT_KW
+%left PLUS MINUS
+%left MULTP DIVIDE MOD
+%right NAGHIZ_KW
 
 %%
 program:
 	PROGRAM_KW SHENASE declarations_list list_ravie MAIN_KW block{
-		System.out.println("Rule 1.1: " +
+		System.out.println("Rule 1: " +
 			"program: PROGRAM_KW SHENASE declarations_list list_ravie MAIN_KW block");
 	}
+	| PROGRAM_KW SHENASE list_ravie MAIN_KW block{
+        System.out.println("Rule 2: " +
+            "program: PROGRAM_KW SHENASE list_ravie MAIN_KW block");
+    }
+    | PROGRAM_KW SHENASE declarations_list MAIN_KW block{
+        System.out.println("Rule 3: " +
+            "program: PROGRAM_KW SHENASE declarations_list MAIN_KW block");
+    }
+    | PROGRAM_KW SHENASE MAIN_KW block{
+        System.out.println("Rule 4: " +
+            "program: PROGRAM_KW SHENASE MAIN_KW block");
+    }
 
 declarations_list:
-    declarations{
-		System.out.println("Rule 2.1: " +
-			"declarations_list: declarations");
-	}
-	| declarations_list declarations {
-		System.out.println("Rule 2.2: " +
+	declarations_list declarations {
+		System.out.println("Rule 5: " +
 			"declarations_list: declarations_list declarations");
 	}
+	| declarations{
+        System.out.println("Rule 6: " +
+            "declarations_list: declarations");
+    }
+    ;
 
 declarations:
 	taeen_type declarator_list SEMICOLON_KW{
-		System.out.println("Rule 3.1: " +
+		System.out.println("Rule 7: " +
 			"declarations: taeen_type declarator_list SEMICOLON_KW");
-	}
+	};
 
 taeen_type:
 	INT_KW{
-		System.out.println("Rule 4.1: " +
+		System.out.println("Rule 8: " +
 			"taeen_type: INT_KW");
 	}
 	| FLOAT_KW{
-		System.out.println("Rule 4.2: " +
+		System.out.println("Rule 9: " +
 			"taeen_type: REAL_KW");
 	}
 	| CHAR_KW{
-		System.out.println("Rule 4.3: " +
+		System.out.println("Rule 10: " +
 			"taeen_type: CHAR_KW");
 	}
 	| BOOLEAN_KW{
-		System.out.println("Rule 4.4: " +
+		System.out.println("Rule 11: " +
 			"taeen_type: BOOLEAN_KW");
-	}
+	};
 
 declarator_list:
     declarator{
-		System.out.println("Rule 5.1: " +
+		System.out.println("Rule 12: " +
 			"delarator_list: declarator");
 	}
 	| declarator_list COMMA_KW declarator{
-		System.out.println("Rule 5.2: " +
+		System.out.println("Rule 13: " +
 			"declarator_list: declarator_list COMMA_KW declarator");
-	}
+	};
 
 declarator:
 	dec{
-		System.out.println("Rule 6.1: " +
+		System.out.println("Rule 14: " +
 			"declarator: dec");
 	}
 	| dec ASSIGN_KW meghdar_avalie{
-		System.out.println("Rule 6.2: " +
+		System.out.println("Rule 15: " +
 			"declarator: dec ASSIGN_KW meghdar_avalie");
-	}
+	};
 
 dec:
 	SHENASE{
-		System.out.println("Rule 7.1: " +
+		System.out.println("Rule 16: " +
 			"dec: SHENASE");
 	}
 	| SHENASE RANGE_START range RANGE_END{
-		System.out.println("Rule 7.2: " +
+		System.out.println("Rule 17: " +
 			"dec: SHENASE RANGE_START range RANGE_END");
 	}
-	| IDENTIFIER RANGE_START ADADSABET RANGE_END{
-		System.out.println("Rule 7.3: " +
-			"dec: IDENTIFIER RANGE_START ADADSABET RANGE_END");
-	}
+	| SHENASE RANGE_START ADADSABET RANGE_END{
+		System.out.println("Rule 18: " +
+			"dec: SHENASE RANGE_START ADADSABET RANGE_END");
+	};
 
 range:
 	SHENASE TWO_DOTS_KW SHENASE{
-		System.out.println("Rule 8.1: " +
+		System.out.println("Rule 19: " +
 			"range: SHENASE TWO_DOTS_KW SHENASE");
 	}
 	| ADADSABET TWO_DOTS_KW ADADSABET{
-		System.out.println("Rule 8.2: " +
+		System.out.println("Rule 20: " +
 			"range: ADADSABET TWO_DOTS_KW ADADSABET");
 	}
 	| ebarat_riazi TWO_DOTS_KW ebarat_riazi{
-		System.out.println("Rule 8.3: " +
+		System.out.println("Rule 21: " +
 			"range: ebarat_riazi TWO_DOTS_KW ebarat_riazi");
-	}
+	};
 
 meghdar_avalie:
     ebarat_sabet{
-        System.out.println("Rule 9.1: " +
+        System.out.println("Rule 22: " +
         			"meghdar_avalie: ebarat_sabet");
     }
-	| BLOCK_START List_meghdar_avalie BLOCK_END{
-		System.out.println("Rule 9.2: " +
-			"meghdar_avalie: BLOCK_START List_meghdar_avalie BLOCK_END");
-	}
+	| BLOCK_START list_meghdar_avalie BLOCK_END{
+		System.out.println("Rule 23: " +
+			"meghdar_avalie: BLOCK_START list_meghdar_avalie BLOCK_END");
+	};
 
 list_meghdar_avalie:
 	ebarat_sabet COMMA_KW list_meghdar_avalie{
-		System.out.println("Rule 10.1: " +
+		System.out.println("Rule 24: " +
 			"list_meghdar_avalie: ebarat_sabet COMMA_KW list_meghdar_avalie");
 	}
 	| ebarat_sabet{
-		System.out.println("Rule 10.2: " +
+		System.out.println("Rule 25: " +
 			"list_meghdar_avalie: ebarat_sabet");
-	}
+	};
 
 list_ravie:
-	list_ravie ravie {
-		System.out.println("Rule 11.1: " +
+    ravie {
+        System.out.println("Rule 26: " +
+            "list_ravie: ravie ");
+    };
+	| list_ravie ravie {
+		System.out.println("Rule 27: " +
 			"list_ravie: list_ravie ravie ");
-	}
+	};
 
 ravie:
-	RAVIE_KW SHENASE parameters BLOCK_START declarations_list block BLOCK_END SEMICOLON {
-		System.out.println("Rule 12.1: " +
-			"ravie:	RAVIE_KW SHENASE parameters BLOCK_START declarations_list block BLOCK_END SEMICOLON");
+    RAVIE_KW SHENASE parameters BLOCK_START block BLOCK_END SEMICOLON_KW {
+		System.out.println("Rule 28: " +
+			"ravie:	RAVIE_KW SHENASE parameters BLOCK_START block BLOCK_END SEMICOLON_KW");
 	}
+    | RAVIE_KW SHENASE parameters BLOCK_START declarations_list block BLOCK_END SEMICOLON_KW {
+		System.out.println("Rule 29: " +
+			"ravie:	RAVIE_KW SHENASE parameters BLOCK_START declarations_list block BLOCK_END SEMICOLON_KW");
+	};
 
 parameters:
-	LP_KW declarations_list RP_KW {
-		System.out.println("Rule 13.1: " +
+    LP_KW RP_KW {
+        System.out.println("Rule 30: " +
+            "parameters: LP_KW RP_KW");
+    };
+	| LP_KW declarations_list RP_KW {
+		System.out.println("Rule 31: " +
 			"parameters: LP_KW declarations_list RP_KW");
-	}
+	};
 
 block:
 	BLOCK_START statement_list BLOCK_END {
-		System.out.println("Rule 14.1: " +
+		System.out.println("Rule 32: " +
 			"block:	BLOCK_START statement_list BLOCK_END");
-	}
+	};
 
 statement_list:
-	statement SEMICOLON_KW {
-		System.out.println("Rule 15.1: " +
+    SEMICOLON_KW {
+        System.out.println("Rule 33: " +
+            "statement_list: SEMICOLON_KW");
+    }
+	| statement SEMICOLON_KW {
+		System.out.println("Rule 34: " +
 			"statement_list: statement SEMICOLON_KW");
 	}
 	| statement_list statement SEMICOLON_KW {
-		System.out.println("Rule 15.2: " +
+		System.out.println("Rule 35: " +
 			"statement_list: statement_list statement SEMICOLON_KW");
 	}
+	| statement_list SEMICOLON_KW {
+        System.out.println("Rule 36: " +
+            "statement_list: statement_list SEMICOLON_KW");
+    };
 
-statement:
-	SHENASE ASSIGN_KW ebarat {
-		System.out.println("Rule 16.1: " +
-			"statement: SHENASE ASSIGN_KW ebarat");
-	}
-	| AGAR_KW ebarat_bool ANGAH_KW statement {
-		System.out.println("Rule 16.2: " +
-			"statement: AGAR_KW ebarat_bool ANGAH_KW statement");
-	}
-	| AGAR_KW ebarat_bool ANGAH_KW statement VAGARNA_KW statement {
-		System.out.println("Rule 16.3: " +
-			"AGAR_KW ebarat_bool ANGAH_KW statement VAGARNA_KW statement");
-	}
-	| DO_KW statement WHILE_KW ebarat_bool {
-		System.out.println("Rule 16.4: " +
+other_statements:
+    SHENASE ASSIGN_KW ebarat {
+        System.out.println("Rule 37: " +
+            "statement: SHENASE ASSIGN_KW ebarat");
+    }
+    | DO_KW statement WHILE_KW ebarat_bool {
+		System.out.println("Rule 40: " +
 			"statement: DO_KW statement WHILE_KW ebarat_bool");
 	}
+	| DO_KW WHILE_KW ebarat_bool {}
 	| FOR_KW SHENASE ASSIGN_KW counter DO_KW statement {
-		System.out.println("Rule 16.5: " +
+		System.out.println("Rule 41: " +
 			"statement: FOR_KW SHENASE ASSIGN_KW counter DO_KW statement");
 	}
+	| FOR_KW SHENASE ASSIGN_KW counter DO_KW {}
 	| GOZINESH_KW ebarat onsor_mored default END_KW {
-		System.out.println("Rule 16.6: " +
+		System.out.println("Rule 42: " +
 			"statement: GOZINESH_KW ebarat onsor_mored default END_KW");
 	}
+    | GOZINESH_KW ebarat onsor_mored END_KW {
+		System.out.println("Rule 43: " +
+			"statement: GOZINESH_KW ebarat onsor_mored END_KW");
+	}
 	| SHENASE LP_KW arguments_list RP_KW {
-		System.out.println("Rule 16.7: " +
+		System.out.println("Rule 44: " +
 			"statement: SHENASE LP_KW arguments_list RP_KW");
 	}
+	| SHENASE LP_KW RP_KW {
+		System.out.println("Rule 45: " +
+			"statement: SHENASE LP_KW RP_KW");
+	}
 	| SHENASE RANGE_START ebarat RANGE_END ASSIGN_KW ebarat {
-    		System.out.println("Rule 16.8: " +
-    			"statement: SHENASE RANGE_START ebarat RANGE_END ASSIGN_KW ebarat");
+        System.out.println("Rule 46: " +
+            "statement: SHENASE RANGE_START ebarat RANGE_END ASSIGN_KW ebarat");
     }
 	| BAZGASHT_KW ebarat {
-		System.out.println("Rule 16.9: " +
+		System.out.println("Rule 49: " +
 			"statement: BAZGASHT_KW ebarat");
 	}
 	| EXIT_KW WHEN_KW ebarat_bool {
-		System.out.println("Rule 16.10: " +
+		System.out.println("Rule 50: " +
 			"statement: EXIT_KW WHEN_KW ebarat_bool");
 	}
 	| block {
-		System.out.println("Rule 16.11: " +
+		System.out.println("Rule 51: " +
 			"statement: block");
+	};
+
+matched:
+    AGAR_KW ebarat_bool ANGAH_KW matched VAGARNA_KW matched {
+        System.out.println("Rule 37: " +
+            "statement: SHENASE ASSIGN_KW ebarat");
+    }
+    | AGAR_KW ebarat_bool ANGAH_KW VAGARNA_KW matched {}
+    | AGAR_KW ebarat_bool ANGAH_KW matched VAGARNA_KW {}
+    | AGAR_KW ebarat_bool ANGAH_KW VAGARNA_KW {}
+    | other_statements {};
+
+unmatched:
+    AGAR_KW ebarat_bool ANGAH_KW statement {}
+    | AGAR_KW ebarat_bool ANGAH_KW matched VAGARNA_KW unmatched {}
+
+statement:
+	unmatched {
+	    System.out.println("Rule 40: " +
+            "statement: unmatched");
+	}
+	| matched {
+	    System.out.println("Rule 40: " +
+            "statement: matched");
 	}
 
 arguments_list:
-	multi_arguments {
-		System.out.println("Rule 17.1: " +
+	arguments_list COMMA_KW ebarat {
+		System.out.println("Rule 52: " +
 			"arguments_list: multi_arguments");
 	}
-	} ebarat {
-        System.out.println("Rule 17.2: " +
+	| ebarat {
+        System.out.println("Rule 53: " +
             "arguments_list: ebarat");
-    }
-
-multi_arguments:
-    multi_arguments COMMA_KW ebarat{
-        System.out.println("Rule 18.1: " +
-            "multi_arguments: multi_arguments COMMA_KW ebarat");
-    }
-    | ebarat{
-        System.out.println("Rule 18.2: " +
-            "multi_arguments: ebarat");
-    }
+    };
 
 counter:
     ADADSABET UPTO_KW ADADSABET{
-        System.out.println("Rule 19.1: " +
+        System.out.println("Rule 56: " +
             "counter: ADADSABET UPTO_KW ADADSABET");
     }
     | ADADSABET DOWNTO_KW ADADSABET{
-        System.out.println("Rule 19.2: " +
+        System.out.println("Rule 57: " +
           "counter: ADADSABET DOWNTO_KW ADADSABET");
-    }
+    };
 
 onsor_mored:
 	MORED_KW ADADSABET COLON_KW block {
-		System.out.println("Rule 20.1: " +
+		System.out.println("Rule 58: " +
 			"onsor_mored: MORED_KW ADADSABET COLON_KW block ");
 	}
 	| onsor_mored MORED_KW ADADSABET COLON_KW block {
-		System.out.println("Rule 20.2: " +
+		System.out.println("Rule 59: " +
 			"onsor_mored: onsor_mored MORED_KW ADADSABET COLON_KW block");
-	}
+	};
 
 default:
 	DEFAULT_KW COLON_KW block {
-		System.out.println("Rule 21.1: " +
+		System.out.println("Rule 60: " +
 			"default: DEFAULT_KW COLON_KW block");
-	}
+	};
 
 ebarat:
 	ebarat_sabet {
-		System.out.println("Rule 22.1: " +
+		System.out.println("Rule 61: " +
 			"ebarat: ebarat_sabet");
 	}
 	| ebarat_bool {
-        System.out.println("Rule 22.2: " +
+        System.out.println("Rule 62: " +
             "ebarat: ebarat_bool");
     }
 	| ebarat_riazi{
-		System.out.println("Rule 22.3: " +
+		System.out.println("Rule 63: " +
 			"ebarat: ebarat_riazi");
 	}
 	| SHENASE {
-		System.out.println("Rule 22.4: " +
+		System.out.println("Rule 64: " +
 			"ebarat: SHENASE");
 	}
 	| SHENASE RANGE_START ebarat RANGE_END {
-		System.out.println("Rule 22.5: " +
+		System.out.println("Rule 65: " +
 			"ebarat: SHENASE RANGE_START ebarat RANGE_END");
 	}
 	| SHENASE LP_KW arguments_list RP_KW {
-        System.out.println("Rule 22.6: " +
+        System.out.println("Rule 66: " +
             "ebarat: SHENASE LP_KW arguments_list RP_KW");
     }
-    | LP_KW ebarat RP_KW {
-        System.out.println("Rule 22.7: " +
-            "ebarat: LP_KW ebarat RP_KW ");
+	| SHENASE LP_KW RP_KW {
+        System.out.println("Rule 67: " +
+            "ebarat: SHENASE LP_KW RP_KW");
     }
+    | LP_KW ebarat RP_KW {
+        System.out.println("Rule 68: " +
+            "ebarat: LP_KW ebarat RP_KW ");
+    };
 
 ebarat_sabet:
 	ADADSABET {
-		System.out.println("Rule 23.1: " +
+		System.out.println("Rule 69: " +
 			"ebarat_sabet: ADADSABET");
 	}
 	| REALCONST {
-		System.out.println("Rule 23.2: " +
+		System.out.println("Rule 70: " +
 			"ebarat_sabet: REALCONST");
 	}
 	| HARF {
-		System.out.println("Rule 23.3: " +
+		System.out.println("Rule 71: " +
 			"ebarat_sabet: HARF");
 	}
 	| BOOLSABET {
-		System.out.println("Rule 23.4: " +
+		System.out.println("Rule 72: " +
 			"ebarat_sabet: BOOL_SABET");
-	}
+	};
 
 ebarat_riazi:
 	zojmoratab PLUS {
-		System.out.println("Rule 24.1: " +
+		System.out.println("Rule 73: " +
 			"ebarat_riazi: zojmoratab PLUS");
 	}
 	| zojmoratab MINUS {
-        System.out.println("Rule 24.2: " +
+        System.out.println("Rule 74: " +
             "ebarat_riazi: zojmoratab MINUS");
     }
     | zojmoratab MULTP {
-        System.out.println("Rule 24.3: " +
+        System.out.println("Rule 75: " +
             "ebarat_riazi: zojmoratab MULTP");
     }
     | zojmoratab DIVIDE {
-        System.out.println("Rule 24.4: " +
+        System.out.println("Rule 76: " +
             "ebarat_riazi: zojmoratab DIVIDE");
     }
     | zojmoratab MOD {
-        System.out.println("Rule 24.5: " +
+        System.out.println("Rule 77: " +
             "ebarat_riazi: zojmoratab MOD");
     }
 	| MINUS ebarat {
-		System.out.println("Rule 24.6: " +
+		System.out.println("Rule 78: " +
 			"ebarat_riazi: MINUS ebarat");
-	}
-
-zojmoratab:
-    RP_KW ebarat COMMA_KW ebarat LP_KW{
-        System.out.println("Rule 25.1: " +
-            "zojmoratab: RP_KW ebarat COMMA_KW ebarat LP_KW");
-    }
+	};
 
 ebarat_bool:
 	zojmoratab VA_KW {
-		System.out.println("Rule 26.1: " +
+		System.out.println("Rule 79: " +
 			"ebarat_bool: zojmoratab VA_KW ");
 	}
 	| zojmoratab YA_KW {
-        System.out.println("Rule 26.2: " +
+        System.out.println("Rule 80: " +
             "ebarat_bool: zojmoratab YA_KW ");
     }
     | zojmoratab VAANGAH_KW {
-        System.out.println("Rule 26.3: " +
+        System.out.println("Rule 81: " +
             "ebarat_bool: zojmoratab VAANGAH_KW ");
     }
     | zojmoratab YAVAGARNA_KW {
-        System.out.println("Rule 26.4: " +
+        System.out.println("Rule 82: " +
             "ebarat_bool: zojmoratab YAVAGARNA_KW ");
     }
     | zojmoratab LT_KW {
-        System.out.println("Rule 26.5: " +
+        System.out.println("Rule 83: " +
             "ebarat_bool: zojmoratab LT_KW ");
     }
     | zojmoratab LTE_KW {
-        System.out.println("Rule 26.6: " +
+        System.out.println("Rule 84: " +
             "ebarat_bool: zojmoratab LTE_KW ");
     }
     | zojmoratab GT_KW {
-        System.out.println("Rule 26.7: " +
+        System.out.println("Rule 85: " +
             "ebarat_bool: zojmoratab GT_KW ");
     }
     | zojmoratab GTE_KW {
-        System.out.println("Rule 26.8: " +
+        System.out.println("Rule 86: " +
             "ebarat_bool: zojmoratab GTE_KW ");
     }
     | zojmoratab EQ_KW {
-        System.out.println("Rule 26.9: " +
+        System.out.println("Rule 87: " +
             "ebarat_bool: zojmoratab EQ_KW ");
     }
     | zojmoratab NEQ_KW {
-        System.out.println("Rule 26.10: " +
+        System.out.println("Rule 88: " +
             "ebarat_bool: zojmoratab NEQ_KW ");
     }
     | ebarat NAGHIZ_KW {
-        System.out.println("Rule 26.11: " +
+        System.out.println("Rule 90: " +
             "ebarat_bool: ebarat NAGHIZ_KW ");
-    }
+    };
+
+zojmoratab:
+    LP_KW ebarat COMMA_KW ebarat RP_KW{
+        System.out.println("Rule 91: " +
+            "zojmoratab: RP_KW ebarat COMMA_KW ebarat LP_KW");
+    };
 
 

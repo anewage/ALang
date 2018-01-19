@@ -1,7 +1,7 @@
 /*
     CODE SECTION
 */
-package Ph1;
+package Ph2;
 import java.io.*;
 import java.util.Hashtable;
 
@@ -70,7 +70,6 @@ BLOCK_START = (\{)
 BLOCK_END = (\})
 RANGE_START = (\[)
 RANGE_END = (\])
-COMMA_KW = (,)
 NEQ_KW = (<>)
 GT_KW = (>)
 GTE_KW = (>=)
@@ -83,6 +82,7 @@ FLOAT_KW = (float)
 CHAR_KW = (char)
 BOOLEAN_KW = (boolean)
 PROGRAM_KW = (program)
+MAIN_KW = (main)
 AGAR_KW = (agar)
 ANGAH_KW = (angah)
 VAGARNA_KW = (vagarna)
@@ -111,7 +111,7 @@ BAZGASHT_KW = (bazgasht)
     RULES
 */
 
-{SHENASE} {echoFinding(yytext(), "SHENASE", insertSymbol(yytext(), "SHENASE"));}
+{SHENASE} {echoFinding(yytext(), "SHENASE", ""+insertSymbol(yytext(), "SHENASE"));}
 {HARF} {echoFinding(yytext(), "HARF", "-");}
 {ADADSABET} {echoFinding(yytext(), "ADADSABET", "-");}
 {REALCONST} {echoFinding(yytext(), "REALCONST", "-");}
@@ -125,7 +125,6 @@ BAZGASHT_KW = (bazgasht)
 {DOT_KW} {echoFinding(yytext(), "DOT_KW", "-");}
 {LP_KW} {echoFinding(yytext(), "LP_KW", "-");}
 {RP_KW} {echoFinding(yytext(), "RP_KW", "-");}
-{COMMA_KW} {echoFinding(yytext(), "COMMA_KW", "-");}
 {PLUS} {echoFinding(yytext(), "PLUS", "-");}
 {MINUS} {echoFinding(yytext(), "MINUS", "-");}
 {MULTP} {echoFinding(yytext(), "MULTP", "-");}
@@ -147,6 +146,7 @@ BAZGASHT_KW = (bazgasht)
 {CHAR_KW} {echoFinding(yytext(), "CHAR_KW", "-");}
 {BOOLEAN_KW} {echoFinding(yytext(), "BOOLEAN_KW", "-");}
 {PROGRAM_KW} {echoFinding(yytext(), "PROGRAM_KW", "-");}
+{MAIN_KW} {echoFinding(yytext(), "MAIN_KW", "-");}
 {AGAR_KW} {echoFinding(yytext(), "AGAR_KW", "-");}
 {ANGAH_KW} {echoFinding(yytext(), "ANGAH_KW", "-");}
 {VAGARNA_KW} {echoFinding(yytext(), "VAGARNA_KW", "-");}
@@ -168,6 +168,5 @@ BAZGASHT_KW = (bazgasht)
 {RAVIE_KW} {echoFinding(yytext(), "RAVIE_KW", "-");}
 {NAGHIZ_KW} {echoFinding(yytext(), "NAGHIZ_KW", "-");}
 {BAZGASHT_KW} {echoFinding(yytext(), "BAZGASHT_KW", "-");}
-{COMMENTS} {echoFinding(yytext(), "COMMENTS", "-");}
 {WHITESPACE} {}
 . {}

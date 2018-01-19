@@ -1,6 +1,9 @@
-package Ph1;
+package Ph2;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
 
@@ -27,9 +30,9 @@ public class Main {
     public void lex(){
         try {
             FileReader r = new FileReader("./src/Resources/input.al");
-            Yylex lexer = new Yylex(r);
+            Ph2.Yylex lexer = new Ph2.Yylex(r);
             lexer.yylex();
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
