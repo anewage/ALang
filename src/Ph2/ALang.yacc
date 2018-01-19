@@ -1,6 +1,8 @@
 %{
   package Ph2;
+  import java.io.*;
 %}
+
 
 /* The Start Symbol of the Grammar */
 %start program

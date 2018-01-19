@@ -36,6 +36,7 @@
 /* Line 1 of "../src/Ph2/ALang.yacc"  */
 
   package Ph2;
+  import java.io.*;
 
 
 /**
@@ -191,7 +192,7 @@ class YYParser
      * to the next token and prepares to return the semantic value
      * of the token.
      * @return the token identifier corresponding to the next token. */
-    int yylex() throws java.io.IOException;
+    int yylex() throws IOException;
 
     /**
      * Entry point for error reporting.  Emits an error
@@ -218,19 +219,19 @@ class YYParser
     
   }
 
-  private java.io.PrintStream yyDebugStream = System.err;
+  private PrintStream yyDebugStream = System.err;
 
   /**
    * Return the <tt>PrintStream</tt> on which the debugging output is
    * printed.
    */
-  public final java.io.PrintStream getDebugStream () { return yyDebugStream; }
+  public final PrintStream getDebugStream () { return yyDebugStream; }
 
   /**
    * Set the <tt>PrintStream</tt> on which the debug output is printed.
    * @param s The stream that is used for debugging output.
    */
-  public final void setDebugStream(java.io.PrintStream s) { yyDebugStream = s; }
+  public final void setDebugStream(PrintStream s) { yyDebugStream = s; }
 
   private int yydebug = 0;
 
@@ -247,7 +248,7 @@ class YYParser
    */
   public final void setDebugLevel(int level) { yydebug = level; }
 
-  private final int yylex () throws java.io.IOException {
+  private final int yylex () throws IOException {
     return yylexer.yylex ();
   }
   protected final void yyerror (String s) {
@@ -312,7 +313,7 @@ class YYParser
     }
 
     // Print the state stack on the debug stream.
-    public void print (java.io.PrintStream out)
+    public void print (PrintStream out)
     {
       out.print ("Stack now");
 
@@ -384,7 +385,7 @@ class YYParser
   if (yyn == 2)
     
 /* Line 351 of lalr1.java  */
-/* Line 77 of "../src/Ph2/ALang.yacc"  */
+/* Line 79 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 1: " +
 			"program: PROGRAM_KW SHENASE declarations_list list_ravie MAIN_KW block");
@@ -396,7 +397,7 @@ class YYParser
   if (yyn == 3)
     
 /* Line 351 of lalr1.java  */
-/* Line 81 of "../src/Ph2/ALang.yacc"  */
+/* Line 83 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 2: " +
             "program: PROGRAM_KW SHENASE list_ravie MAIN_KW block");
@@ -408,7 +409,7 @@ class YYParser
   if (yyn == 4)
     
 /* Line 351 of lalr1.java  */
-/* Line 85 of "../src/Ph2/ALang.yacc"  */
+/* Line 87 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 3: " +
             "program: PROGRAM_KW SHENASE declarations_list MAIN_KW block");
@@ -420,7 +421,7 @@ class YYParser
   if (yyn == 5)
     
 /* Line 351 of lalr1.java  */
-/* Line 89 of "../src/Ph2/ALang.yacc"  */
+/* Line 91 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 4: " +
             "program: PROGRAM_KW SHENASE MAIN_KW block");
@@ -432,7 +433,7 @@ class YYParser
   if (yyn == 6)
     
 /* Line 351 of lalr1.java  */
-/* Line 95 of "../src/Ph2/ALang.yacc"  */
+/* Line 97 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 5: " +
 			"declarations_list: declarations_list declarations");
@@ -444,7 +445,7 @@ class YYParser
   if (yyn == 7)
     
 /* Line 351 of lalr1.java  */
-/* Line 99 of "../src/Ph2/ALang.yacc"  */
+/* Line 101 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 6: " +
             "declarations_list: declarations");
@@ -456,7 +457,7 @@ class YYParser
   if (yyn == 8)
     
 /* Line 351 of lalr1.java  */
-/* Line 105 of "../src/Ph2/ALang.yacc"  */
+/* Line 107 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 7: " +
 			"declarations: taeen_type declarator_list SEMICOLON_KW");
@@ -468,7 +469,7 @@ class YYParser
   if (yyn == 9)
     
 /* Line 351 of lalr1.java  */
-/* Line 111 of "../src/Ph2/ALang.yacc"  */
+/* Line 113 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 8: " +
 			"taeen_type: INT_KW");
@@ -480,7 +481,7 @@ class YYParser
   if (yyn == 10)
     
 /* Line 351 of lalr1.java  */
-/* Line 115 of "../src/Ph2/ALang.yacc"  */
+/* Line 117 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 9: " +
 			"taeen_type: REAL_KW");
@@ -492,7 +493,7 @@ class YYParser
   if (yyn == 11)
     
 /* Line 351 of lalr1.java  */
-/* Line 119 of "../src/Ph2/ALang.yacc"  */
+/* Line 121 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 10: " +
 			"taeen_type: CHAR_KW");
@@ -504,7 +505,7 @@ class YYParser
   if (yyn == 12)
     
 /* Line 351 of lalr1.java  */
-/* Line 123 of "../src/Ph2/ALang.yacc"  */
+/* Line 125 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 11: " +
 			"taeen_type: BOOLEAN_KW");
@@ -516,7 +517,7 @@ class YYParser
   if (yyn == 13)
     
 /* Line 351 of lalr1.java  */
-/* Line 129 of "../src/Ph2/ALang.yacc"  */
+/* Line 131 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 12: " +
 			"delarator_list: declarator");
@@ -528,7 +529,7 @@ class YYParser
   if (yyn == 14)
     
 /* Line 351 of lalr1.java  */
-/* Line 133 of "../src/Ph2/ALang.yacc"  */
+/* Line 135 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 13: " +
 			"declarator_list: declarator_list COMMA_KW declarator");
@@ -540,7 +541,7 @@ class YYParser
   if (yyn == 15)
     
 /* Line 351 of lalr1.java  */
-/* Line 139 of "../src/Ph2/ALang.yacc"  */
+/* Line 141 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 14: " +
 			"declarator: dec");
@@ -552,7 +553,7 @@ class YYParser
   if (yyn == 16)
     
 /* Line 351 of lalr1.java  */
-/* Line 143 of "../src/Ph2/ALang.yacc"  */
+/* Line 145 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 15: " +
 			"declarator: dec ASSIGN_KW meghdar_avalie");
@@ -564,7 +565,7 @@ class YYParser
   if (yyn == 17)
     
 /* Line 351 of lalr1.java  */
-/* Line 149 of "../src/Ph2/ALang.yacc"  */
+/* Line 151 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 16: " +
 			"dec: SHENASE");
@@ -576,7 +577,7 @@ class YYParser
   if (yyn == 18)
     
 /* Line 351 of lalr1.java  */
-/* Line 153 of "../src/Ph2/ALang.yacc"  */
+/* Line 155 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 17: " +
 			"dec: SHENASE RANGE_START range RANGE_END");
@@ -588,7 +589,7 @@ class YYParser
   if (yyn == 19)
     
 /* Line 351 of lalr1.java  */
-/* Line 157 of "../src/Ph2/ALang.yacc"  */
+/* Line 159 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 18: " +
 			"dec: SHENASE RANGE_START ADADSABET RANGE_END");
@@ -600,7 +601,7 @@ class YYParser
   if (yyn == 20)
     
 /* Line 351 of lalr1.java  */
-/* Line 163 of "../src/Ph2/ALang.yacc"  */
+/* Line 165 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 19: " +
 			"range: SHENASE TWO_DOTS_KW SHENASE");
@@ -612,7 +613,7 @@ class YYParser
   if (yyn == 21)
     
 /* Line 351 of lalr1.java  */
-/* Line 167 of "../src/Ph2/ALang.yacc"  */
+/* Line 169 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 20: " +
 			"range: ADADSABET TWO_DOTS_KW ADADSABET");
@@ -624,7 +625,7 @@ class YYParser
   if (yyn == 22)
     
 /* Line 351 of lalr1.java  */
-/* Line 171 of "../src/Ph2/ALang.yacc"  */
+/* Line 173 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 21: " +
 			"range: ebarat_riazi TWO_DOTS_KW ebarat_riazi");
@@ -636,7 +637,7 @@ class YYParser
   if (yyn == 23)
     
 /* Line 351 of lalr1.java  */
-/* Line 177 of "../src/Ph2/ALang.yacc"  */
+/* Line 179 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 22: " +
         			"meghdar_avalie: ebarat_sabet");
@@ -648,7 +649,7 @@ class YYParser
   if (yyn == 24)
     
 /* Line 351 of lalr1.java  */
-/* Line 181 of "../src/Ph2/ALang.yacc"  */
+/* Line 183 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 23: " +
 			"meghdar_avalie: BLOCK_START list_meghdar_avalie BLOCK_END");
@@ -660,7 +661,7 @@ class YYParser
   if (yyn == 25)
     
 /* Line 351 of lalr1.java  */
-/* Line 187 of "../src/Ph2/ALang.yacc"  */
+/* Line 189 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 24: " +
 			"list_meghdar_avalie: ebarat_sabet COMMA_KW list_meghdar_avalie");
@@ -672,7 +673,7 @@ class YYParser
   if (yyn == 26)
     
 /* Line 351 of lalr1.java  */
-/* Line 191 of "../src/Ph2/ALang.yacc"  */
+/* Line 193 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 25: " +
 			"list_meghdar_avalie: ebarat_sabet");
@@ -684,7 +685,7 @@ class YYParser
   if (yyn == 27)
     
 /* Line 351 of lalr1.java  */
-/* Line 197 of "../src/Ph2/ALang.yacc"  */
+/* Line 199 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 26: " +
             "list_ravie: ravie ");
@@ -696,7 +697,7 @@ class YYParser
   if (yyn == 28)
     
 /* Line 351 of lalr1.java  */
-/* Line 201 of "../src/Ph2/ALang.yacc"  */
+/* Line 203 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 27: " +
 			"list_ravie: list_ravie ravie ");
@@ -708,7 +709,7 @@ class YYParser
   if (yyn == 29)
     
 /* Line 351 of lalr1.java  */
-/* Line 207 of "../src/Ph2/ALang.yacc"  */
+/* Line 209 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 28: " +
 			"ravie:	RAVIE_KW SHENASE parameters BLOCK_START block BLOCK_END SEMICOLON_KW");
@@ -720,7 +721,7 @@ class YYParser
   if (yyn == 30)
     
 /* Line 351 of lalr1.java  */
-/* Line 211 of "../src/Ph2/ALang.yacc"  */
+/* Line 213 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 29: " +
 			"ravie:	RAVIE_KW SHENASE parameters BLOCK_START declarations_list block BLOCK_END SEMICOLON_KW");
@@ -732,7 +733,7 @@ class YYParser
   if (yyn == 31)
     
 /* Line 351 of lalr1.java  */
-/* Line 217 of "../src/Ph2/ALang.yacc"  */
+/* Line 219 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 30: " +
             "parameters: LP_KW RP_KW");
@@ -744,7 +745,7 @@ class YYParser
   if (yyn == 32)
     
 /* Line 351 of lalr1.java  */
-/* Line 221 of "../src/Ph2/ALang.yacc"  */
+/* Line 223 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 31: " +
 			"parameters: LP_KW declarations_list RP_KW");
@@ -756,7 +757,7 @@ class YYParser
   if (yyn == 33)
     
 /* Line 351 of lalr1.java  */
-/* Line 227 of "../src/Ph2/ALang.yacc"  */
+/* Line 229 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 32: " +
 			"block:	BLOCK_START statement_list BLOCK_END");
@@ -768,7 +769,7 @@ class YYParser
   if (yyn == 34)
     
 /* Line 351 of lalr1.java  */
-/* Line 233 of "../src/Ph2/ALang.yacc"  */
+/* Line 235 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 33: " +
             "statement_list: SEMICOLON_KW");
@@ -780,7 +781,7 @@ class YYParser
   if (yyn == 35)
     
 /* Line 351 of lalr1.java  */
-/* Line 237 of "../src/Ph2/ALang.yacc"  */
+/* Line 239 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 34: " +
 			"statement_list: statement SEMICOLON_KW");
@@ -792,7 +793,7 @@ class YYParser
   if (yyn == 36)
     
 /* Line 351 of lalr1.java  */
-/* Line 241 of "../src/Ph2/ALang.yacc"  */
+/* Line 243 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 35: " +
 			"statement_list: statement_list statement SEMICOLON_KW");
@@ -804,7 +805,7 @@ class YYParser
   if (yyn == 37)
     
 /* Line 351 of lalr1.java  */
-/* Line 245 of "../src/Ph2/ALang.yacc"  */
+/* Line 247 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 36: " +
             "statement_list: statement_list SEMICOLON_KW");
@@ -816,7 +817,7 @@ class YYParser
   if (yyn == 38)
     
 /* Line 351 of lalr1.java  */
-/* Line 251 of "../src/Ph2/ALang.yacc"  */
+/* Line 253 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 37: " +
             "statement: AGAR_KW ebarat_bool ANGAH_KW");
@@ -828,7 +829,7 @@ class YYParser
   if (yyn == 39)
     
 /* Line 351 of lalr1.java  */
-/* Line 255 of "../src/Ph2/ALang.yacc"  */
+/* Line 257 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 38: " +
             "statement: AGAR_KW ebarat_bool ANGAH_KW statement");
@@ -840,7 +841,7 @@ class YYParser
   if (yyn == 40)
     
 /* Line 351 of lalr1.java  */
-/* Line 259 of "../src/Ph2/ALang.yacc"  */
+/* Line 261 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 39: " +
             "statement: AGAR_KW ebarat_bool ANGAH_KW VAGARNA_KW statement");
@@ -852,7 +853,7 @@ class YYParser
   if (yyn == 41)
     
 /* Line 351 of lalr1.java  */
-/* Line 263 of "../src/Ph2/ALang.yacc"  */
+/* Line 265 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 40: " +
             "statement: AGAR_KW ebarat_bool ANGAH_KW statement VAGARNA_KW statement");
@@ -864,7 +865,7 @@ class YYParser
   if (yyn == 42)
     
 /* Line 351 of lalr1.java  */
-/* Line 267 of "../src/Ph2/ALang.yacc"  */
+/* Line 269 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 41: " +
             "statement: SHENASE ASSIGN_KW ebarat");
@@ -876,7 +877,7 @@ class YYParser
   if (yyn == 43)
     
 /* Line 351 of lalr1.java  */
-/* Line 271 of "../src/Ph2/ALang.yacc"  */
+/* Line 273 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 42: " +
 			"statement: DO_KW statement WHILE_KW ebarat_bool");
@@ -888,7 +889,7 @@ class YYParser
   if (yyn == 44)
     
 /* Line 351 of lalr1.java  */
-/* Line 275 of "../src/Ph2/ALang.yacc"  */
+/* Line 277 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 43: " +
 			"statement: DO_KW WHILE_KW ebarat_bool");
@@ -900,7 +901,7 @@ class YYParser
   if (yyn == 45)
     
 /* Line 351 of lalr1.java  */
-/* Line 279 of "../src/Ph2/ALang.yacc"  */
+/* Line 281 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 44: " +
 			"statement: FOR_KW SHENASE ASSIGN_KW counter DO_KW statement");
@@ -912,7 +913,7 @@ class YYParser
   if (yyn == 46)
     
 /* Line 351 of lalr1.java  */
-/* Line 283 of "../src/Ph2/ALang.yacc"  */
+/* Line 285 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 45: " +
 			"statement: FOR_KW SHENASE ASSIGN_KW counter DO_KW");
@@ -924,7 +925,7 @@ class YYParser
   if (yyn == 47)
     
 /* Line 351 of lalr1.java  */
-/* Line 287 of "../src/Ph2/ALang.yacc"  */
+/* Line 289 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 46: " +
 			"statement: GOZINESH_KW ebarat onsor_mored default END_KW");
@@ -936,7 +937,7 @@ class YYParser
   if (yyn == 48)
     
 /* Line 351 of lalr1.java  */
-/* Line 291 of "../src/Ph2/ALang.yacc"  */
+/* Line 293 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 47: " +
 			"statement: GOZINESH_KW ebarat onsor_mored END_KW");
@@ -948,7 +949,7 @@ class YYParser
   if (yyn == 49)
     
 /* Line 351 of lalr1.java  */
-/* Line 295 of "../src/Ph2/ALang.yacc"  */
+/* Line 297 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 48: " +
 			"statement: SHENASE LP_KW arguments_list RP_KW");
@@ -960,7 +961,7 @@ class YYParser
   if (yyn == 50)
     
 /* Line 351 of lalr1.java  */
-/* Line 299 of "../src/Ph2/ALang.yacc"  */
+/* Line 301 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 49: " +
 			"statement: SHENASE LP_KW RP_KW");
@@ -972,7 +973,7 @@ class YYParser
   if (yyn == 51)
     
 /* Line 351 of lalr1.java  */
-/* Line 303 of "../src/Ph2/ALang.yacc"  */
+/* Line 305 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 50: " +
             "statement: SHENASE RANGE_START ebarat RANGE_END ASSIGN_KW ebarat");
@@ -984,7 +985,7 @@ class YYParser
   if (yyn == 52)
     
 /* Line 351 of lalr1.java  */
-/* Line 307 of "../src/Ph2/ALang.yacc"  */
+/* Line 309 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 51: " +
 			"statement: BAZGASHT_KW ebarat");
@@ -996,7 +997,7 @@ class YYParser
   if (yyn == 53)
     
 /* Line 351 of lalr1.java  */
-/* Line 311 of "../src/Ph2/ALang.yacc"  */
+/* Line 313 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 52: " +
 			"statement: EXIT_KW WHEN_KW ebarat_bool");
@@ -1008,7 +1009,7 @@ class YYParser
   if (yyn == 54)
     
 /* Line 351 of lalr1.java  */
-/* Line 315 of "../src/Ph2/ALang.yacc"  */
+/* Line 317 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 53: " +
 			"statement: block");
@@ -1020,7 +1021,7 @@ class YYParser
   if (yyn == 55)
     
 /* Line 351 of lalr1.java  */
-/* Line 321 of "../src/Ph2/ALang.yacc"  */
+/* Line 323 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 54: " +
 			"arguments_list: multi_arguments");
@@ -1032,7 +1033,7 @@ class YYParser
   if (yyn == 56)
     
 /* Line 351 of lalr1.java  */
-/* Line 325 of "../src/Ph2/ALang.yacc"  */
+/* Line 327 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 55: " +
             "arguments_list: ebarat");
@@ -1044,7 +1045,7 @@ class YYParser
   if (yyn == 57)
     
 /* Line 351 of lalr1.java  */
-/* Line 331 of "../src/Ph2/ALang.yacc"  */
+/* Line 333 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 56: " +
             "counter: ADADSABET UPTO_KW ADADSABET");
@@ -1056,7 +1057,7 @@ class YYParser
   if (yyn == 58)
     
 /* Line 351 of lalr1.java  */
-/* Line 335 of "../src/Ph2/ALang.yacc"  */
+/* Line 337 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 57: " +
           "counter: ADADSABET DOWNTO_KW ADADSABET");
@@ -1068,7 +1069,7 @@ class YYParser
   if (yyn == 59)
     
 /* Line 351 of lalr1.java  */
-/* Line 341 of "../src/Ph2/ALang.yacc"  */
+/* Line 343 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 58: " +
 			"onsor_mored: MORED_KW ADADSABET COLON_KW block ");
@@ -1080,7 +1081,7 @@ class YYParser
   if (yyn == 60)
     
 /* Line 351 of lalr1.java  */
-/* Line 345 of "../src/Ph2/ALang.yacc"  */
+/* Line 347 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 59: " +
 			"onsor_mored: onsor_mored MORED_KW ADADSABET COLON_KW block");
@@ -1092,7 +1093,7 @@ class YYParser
   if (yyn == 61)
     
 /* Line 351 of lalr1.java  */
-/* Line 351 of "../src/Ph2/ALang.yacc"  */
+/* Line 353 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 60: " +
 			"default: DEFAULT_KW COLON_KW block");
@@ -1104,7 +1105,7 @@ class YYParser
   if (yyn == 62)
     
 /* Line 351 of lalr1.java  */
-/* Line 357 of "../src/Ph2/ALang.yacc"  */
+/* Line 359 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 61: " +
 			"ebarat: ebarat_sabet");
@@ -1116,7 +1117,7 @@ class YYParser
   if (yyn == 63)
     
 /* Line 351 of lalr1.java  */
-/* Line 361 of "../src/Ph2/ALang.yacc"  */
+/* Line 363 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 62: " +
             "ebarat: ebarat_bool");
@@ -1128,7 +1129,7 @@ class YYParser
   if (yyn == 64)
     
 /* Line 351 of lalr1.java  */
-/* Line 365 of "../src/Ph2/ALang.yacc"  */
+/* Line 367 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 63: " +
 			"ebarat: ebarat_riazi");
@@ -1140,7 +1141,7 @@ class YYParser
   if (yyn == 65)
     
 /* Line 351 of lalr1.java  */
-/* Line 369 of "../src/Ph2/ALang.yacc"  */
+/* Line 371 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 64: " +
 			"ebarat: SHENASE");
@@ -1152,7 +1153,7 @@ class YYParser
   if (yyn == 66)
     
 /* Line 351 of lalr1.java  */
-/* Line 373 of "../src/Ph2/ALang.yacc"  */
+/* Line 375 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 65: " +
 			"ebarat: SHENASE RANGE_START ebarat RANGE_END");
@@ -1164,7 +1165,7 @@ class YYParser
   if (yyn == 67)
     
 /* Line 351 of lalr1.java  */
-/* Line 377 of "../src/Ph2/ALang.yacc"  */
+/* Line 379 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 66: " +
             "ebarat: SHENASE LP_KW arguments_list RP_KW");
@@ -1176,7 +1177,7 @@ class YYParser
   if (yyn == 68)
     
 /* Line 351 of lalr1.java  */
-/* Line 381 of "../src/Ph2/ALang.yacc"  */
+/* Line 383 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 67: " +
             "ebarat: SHENASE LP_KW RP_KW");
@@ -1188,7 +1189,7 @@ class YYParser
   if (yyn == 69)
     
 /* Line 351 of lalr1.java  */
-/* Line 385 of "../src/Ph2/ALang.yacc"  */
+/* Line 387 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 68: " +
             "ebarat: LP_KW ebarat RP_KW ");
@@ -1200,7 +1201,7 @@ class YYParser
   if (yyn == 70)
     
 /* Line 351 of lalr1.java  */
-/* Line 391 of "../src/Ph2/ALang.yacc"  */
+/* Line 393 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 69: " +
 			"ebarat_sabet: ADADSABET");
@@ -1212,7 +1213,7 @@ class YYParser
   if (yyn == 71)
     
 /* Line 351 of lalr1.java  */
-/* Line 395 of "../src/Ph2/ALang.yacc"  */
+/* Line 397 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 70: " +
 			"ebarat_sabet: REALCONST");
@@ -1224,7 +1225,7 @@ class YYParser
   if (yyn == 72)
     
 /* Line 351 of lalr1.java  */
-/* Line 399 of "../src/Ph2/ALang.yacc"  */
+/* Line 401 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 71: " +
 			"ebarat_sabet: HARF");
@@ -1236,7 +1237,7 @@ class YYParser
   if (yyn == 73)
     
 /* Line 351 of lalr1.java  */
-/* Line 403 of "../src/Ph2/ALang.yacc"  */
+/* Line 405 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 72: " +
 			"ebarat_sabet: BOOL_SABET");
@@ -1248,7 +1249,7 @@ class YYParser
   if (yyn == 74)
     
 /* Line 351 of lalr1.java  */
-/* Line 409 of "../src/Ph2/ALang.yacc"  */
+/* Line 411 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 73: " +
 			"ebarat_riazi: zojmoratab PLUS");
@@ -1260,7 +1261,7 @@ class YYParser
   if (yyn == 75)
     
 /* Line 351 of lalr1.java  */
-/* Line 413 of "../src/Ph2/ALang.yacc"  */
+/* Line 415 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 74: " +
             "ebarat_riazi: zojmoratab MINUS");
@@ -1272,7 +1273,7 @@ class YYParser
   if (yyn == 76)
     
 /* Line 351 of lalr1.java  */
-/* Line 417 of "../src/Ph2/ALang.yacc"  */
+/* Line 419 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 75: " +
             "ebarat_riazi: zojmoratab MULTP");
@@ -1284,7 +1285,7 @@ class YYParser
   if (yyn == 77)
     
 /* Line 351 of lalr1.java  */
-/* Line 421 of "../src/Ph2/ALang.yacc"  */
+/* Line 423 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 76: " +
             "ebarat_riazi: zojmoratab DIVIDE");
@@ -1296,7 +1297,7 @@ class YYParser
   if (yyn == 78)
     
 /* Line 351 of lalr1.java  */
-/* Line 425 of "../src/Ph2/ALang.yacc"  */
+/* Line 427 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 77: " +
             "ebarat_riazi: zojmoratab MOD");
@@ -1308,7 +1309,7 @@ class YYParser
   if (yyn == 79)
     
 /* Line 351 of lalr1.java  */
-/* Line 429 of "../src/Ph2/ALang.yacc"  */
+/* Line 431 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 78: " +
 			"ebarat_riazi: MINUS ebarat");
@@ -1320,7 +1321,7 @@ class YYParser
   if (yyn == 80)
     
 /* Line 351 of lalr1.java  */
-/* Line 435 of "../src/Ph2/ALang.yacc"  */
+/* Line 437 of "../src/Ph2/ALang.yacc"  */
     {
 		System.out.println("Rule 79: " +
 			"ebarat_bool: zojmoratab VA_KW ");
@@ -1332,7 +1333,7 @@ class YYParser
   if (yyn == 81)
     
 /* Line 351 of lalr1.java  */
-/* Line 439 of "../src/Ph2/ALang.yacc"  */
+/* Line 441 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 80: " +
             "ebarat_bool: zojmoratab YA_KW ");
@@ -1344,7 +1345,7 @@ class YYParser
   if (yyn == 82)
     
 /* Line 351 of lalr1.java  */
-/* Line 443 of "../src/Ph2/ALang.yacc"  */
+/* Line 445 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 81: " +
             "ebarat_bool: zojmoratab VAANGAH_KW ");
@@ -1356,7 +1357,7 @@ class YYParser
   if (yyn == 83)
     
 /* Line 351 of lalr1.java  */
-/* Line 447 of "../src/Ph2/ALang.yacc"  */
+/* Line 449 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 82: " +
             "ebarat_bool: zojmoratab YAVAGARNA_KW ");
@@ -1368,7 +1369,7 @@ class YYParser
   if (yyn == 84)
     
 /* Line 351 of lalr1.java  */
-/* Line 451 of "../src/Ph2/ALang.yacc"  */
+/* Line 453 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 83: " +
             "ebarat_bool: zojmoratab LT_KW ");
@@ -1380,7 +1381,7 @@ class YYParser
   if (yyn == 85)
     
 /* Line 351 of lalr1.java  */
-/* Line 455 of "../src/Ph2/ALang.yacc"  */
+/* Line 457 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 84: " +
             "ebarat_bool: zojmoratab LTE_KW ");
@@ -1392,7 +1393,7 @@ class YYParser
   if (yyn == 86)
     
 /* Line 351 of lalr1.java  */
-/* Line 459 of "../src/Ph2/ALang.yacc"  */
+/* Line 461 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 85: " +
             "ebarat_bool: zojmoratab GT_KW ");
@@ -1404,7 +1405,7 @@ class YYParser
   if (yyn == 87)
     
 /* Line 351 of lalr1.java  */
-/* Line 463 of "../src/Ph2/ALang.yacc"  */
+/* Line 465 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 86: " +
             "ebarat_bool: zojmoratab GTE_KW ");
@@ -1416,7 +1417,7 @@ class YYParser
   if (yyn == 88)
     
 /* Line 351 of lalr1.java  */
-/* Line 467 of "../src/Ph2/ALang.yacc"  */
+/* Line 469 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 87: " +
             "ebarat_bool: zojmoratab EQ_KW ");
@@ -1428,7 +1429,7 @@ class YYParser
   if (yyn == 89)
     
 /* Line 351 of lalr1.java  */
-/* Line 471 of "../src/Ph2/ALang.yacc"  */
+/* Line 473 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 88: " +
             "ebarat_bool: zojmoratab NEQ_KW ");
@@ -1440,7 +1441,7 @@ class YYParser
   if (yyn == 90)
     
 /* Line 351 of lalr1.java  */
-/* Line 475 of "../src/Ph2/ALang.yacc"  */
+/* Line 477 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 90: " +
             "ebarat_bool: ebarat NAGHIZ_KW ");
@@ -1452,7 +1453,7 @@ class YYParser
   if (yyn == 91)
     
 /* Line 351 of lalr1.java  */
-/* Line 481 of "../src/Ph2/ALang.yacc"  */
+/* Line 483 of "../src/Ph2/ALang.yacc"  */
     {
         System.out.println("Rule 91: " +
             "zojmoratab: RP_KW ebarat COMMA_KW ebarat LP_KW");
@@ -1463,7 +1464,7 @@ class YYParser
 
 
 /* Line 351 of lalr1.java  */
-/* Line 1467 of "ALang.cacc"  */
+/* Line 1468 of "ALang.cacc"  */
 	default: break;
       }
 
@@ -1540,7 +1541,7 @@ class YYParser
    * @return <tt>true</tt> if the parsing succeeds.  Note that this does not
    *          imply that there were no syntax errors.
    */
-  public boolean parse () throws java.io.IOException
+  public boolean parse () throws IOException
   {
     /// Lookahead and lookahead in internal form.
     int yychar = yyempty_;
@@ -2155,16 +2156,16 @@ class YYParser
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
   private static final short yyrline_[] =
   {
-         0,    77,    77,    81,    85,    89,    95,    99,   105,   111,
-     115,   119,   123,   129,   133,   139,   143,   149,   153,   157,
-     163,   167,   171,   177,   181,   187,   191,   197,   201,   207,
-     211,   217,   221,   227,   233,   237,   241,   245,   251,   255,
-     259,   263,   267,   271,   275,   279,   283,   287,   291,   295,
-     299,   303,   307,   311,   315,   321,   325,   331,   335,   341,
-     345,   351,   357,   361,   365,   369,   373,   377,   381,   385,
-     391,   395,   399,   403,   409,   413,   417,   421,   425,   429,
-     435,   439,   443,   447,   451,   455,   459,   463,   467,   471,
-     475,   481
+         0,    79,    79,    83,    87,    91,    97,   101,   107,   113,
+     117,   121,   125,   131,   135,   141,   145,   151,   155,   159,
+     165,   169,   173,   179,   183,   189,   193,   199,   203,   209,
+     213,   219,   223,   229,   235,   239,   243,   247,   253,   257,
+     261,   265,   269,   273,   277,   281,   285,   289,   293,   297,
+     301,   305,   309,   313,   317,   323,   327,   333,   337,   343,
+     347,   353,   359,   363,   367,   371,   375,   379,   383,   387,
+     393,   397,   401,   405,   411,   415,   419,   423,   427,   431,
+     437,   441,   445,   449,   453,   457,   461,   465,   469,   473,
+     477,   483
   };
 
   // Report on the debug stream that the rule yyrule is going to be reduced.

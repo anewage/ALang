@@ -1,16 +1,13 @@
 package Ph2;
 
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Main {
 
     private Yylex lexer;
     private YYParser parser;
 
-    public Main(){
+    private Main(){
         System.out.println("Initializing the ALang Lexical Analyzer...");
         try {
             FileWriter fw1 = new FileWriter("./src/Ph1/output.al", false);
@@ -30,51 +27,27 @@ public class Main {
         }
     }
 
-    public void lex(){
-        try {
-            FileReader r = new FileReader("./src/Resources/input.al");
-            this.lexer = new Ph2.Yylex(r);
-//            lexer.yylex();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void lex() throws IOException {
+        FileReader r = new FileReader("./src/Resources/input.al");
+        this.lexer = new Ph2.Yylex(r);
+//        lexer.yylex();
     }
 
-    public void parse(){
+    public void parse() throws IOException {
         System.out.println("Initiating the parser...");
-        parser = new YYParser(new YYParser.Lexer() {
-            @Override
-            public Object getLVal() {
-                Yytoken yyl_return = null;
-                try {
-                    yyl_return = lexer.yylex();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return yyl_return;
-            }
-
-            @Override
-            public int yylex() throws IOException {
-                return 0;
-            }
-
-            @Override
-            public void yyerror(String s) {
-                System.err.println("Error : " + s);
-            }
-        });
-        try {
-            parser.parse();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Yylex lexr = lexer;
+        parser = new YYParser((YYParser.Lexer) lexer);
+        parser.parse();
     }
 
     public static void main(String[] args){
         // initialization
         Main m = new Main();
-        m.lex();
-        m.parse();
+        try {
+            m.lex();
+            m.parse();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
