@@ -7,6 +7,9 @@ import java.io.IOException;
 
 public class Main {
 
+    private Yylex lexer;
+    private YYParser parser;
+
     public Main(){
         System.out.println("Initializing the ALang Lexical Analyzer...");
         try {
@@ -30,8 +33,39 @@ public class Main {
     public void lex(){
         try {
             FileReader r = new FileReader("./src/Resources/input.al");
-            Ph2.Yylex lexer = new Ph2.Yylex(r);
-            lexer.yylex();
+            this.lexer = new Ph2.Yylex(r);
+//            lexer.yylex();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void parse(){
+        System.out.println("Initiating the parser...");
+        parser = new YYParser(new YYParser.Lexer() {
+            @Override
+            public Object getLVal() {
+                Yytoken yyl_return = null;
+                try {
+                    yyl_return = lexer.yylex();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return yyl_return;
+            }
+
+            @Override
+            public int yylex() throws IOException {
+                return 0;
+            }
+
+            @Override
+            public void yyerror(String s) {
+                System.err.println("Error : " + s);
+            }
+        });
+        try {
+            parser.parse();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -41,5 +75,6 @@ public class Main {
         // initialization
         Main m = new Main();
         m.lex();
+        m.parse();
     }
 }

@@ -1,0 +1,2097 @@
+Grammar
+
+    0 $accept: program $end
+
+    1 program: PROGRAM_KW SHENASE declarations_list list_ravie MAIN_KW block
+    2        | PROGRAM_KW SHENASE list_ravie MAIN_KW block
+    3        | PROGRAM_KW SHENASE declarations_list MAIN_KW block
+    4        | PROGRAM_KW SHENASE MAIN_KW block
+
+    5 declarations_list: declarations_list declarations
+    6                  | declarations
+
+    7 declarations: taeen_type declarator_list SEMICOLON_KW
+
+    8 taeen_type: INT_KW
+    9           | FLOAT_KW
+   10           | CHAR_KW
+   11           | BOOLEAN_KW
+
+   12 declarator_list: declarator
+   13                | declarator_list COMMA_KW declarator
+
+   14 declarator: dec
+   15           | dec ASSIGN_KW meghdar_avalie
+
+   16 dec: SHENASE
+   17    | SHENASE RANGE_START range RANGE_END
+   18    | SHENASE RANGE_START ADADSABET RANGE_END
+
+   19 range: SHENASE TWO_DOTS_KW SHENASE
+   20      | ADADSABET TWO_DOTS_KW ADADSABET
+   21      | ebarat_riazi TWO_DOTS_KW ebarat_riazi
+
+   22 meghdar_avalie: ebarat_sabet
+   23               | BLOCK_START list_meghdar_avalie BLOCK_END
+
+   24 list_meghdar_avalie: ebarat_sabet COMMA_KW list_meghdar_avalie
+   25                    | ebarat_sabet
+
+   26 list_ravie: ravie
+   27           | list_ravie ravie
+
+   28 ravie: RAVIE_KW SHENASE parameters BLOCK_START block BLOCK_END SEMICOLON_KW
+   29      | RAVIE_KW SHENASE parameters BLOCK_START declarations_list block BLOCK_END SEMICOLON_KW
+
+   30 parameters: LP_KW RP_KW
+   31           | LP_KW declarations_list RP_KW
+
+   32 block: BLOCK_START statement_list BLOCK_END
+
+   33 statement_list: SEMICOLON_KW
+   34               | statement SEMICOLON_KW
+   35               | statement_list statement SEMICOLON_KW
+   36               | statement_list SEMICOLON_KW
+
+   37 statement: AGAR_KW ebarat_bool ANGAH_KW
+   38          | AGAR_KW ebarat_bool ANGAH_KW statement
+   39          | AGAR_KW ebarat_bool ANGAH_KW VAGARNA_KW statement
+   40          | AGAR_KW ebarat_bool ANGAH_KW statement VAGARNA_KW statement
+   41          | SHENASE ASSIGN_KW ebarat
+   42          | DO_KW statement WHILE_KW ebarat_bool
+   43          | DO_KW WHILE_KW ebarat_bool
+   44          | FOR_KW SHENASE ASSIGN_KW counter DO_KW statement
+   45          | FOR_KW SHENASE ASSIGN_KW counter DO_KW
+   46          | GOZINESH_KW ebarat onsor_mored default END_KW
+   47          | GOZINESH_KW ebarat onsor_mored END_KW
+   48          | SHENASE LP_KW arguments_list RP_KW
+   49          | SHENASE LP_KW RP_KW
+   50          | SHENASE RANGE_START ebarat RANGE_END ASSIGN_KW ebarat
+   51          | BAZGASHT_KW ebarat
+   52          | EXIT_KW WHEN_KW ebarat_bool
+   53          | block
+
+   54 arguments_list: arguments_list COMMA_KW ebarat
+   55               | ebarat
+
+   56 counter: ADADSABET UPTO_KW ADADSABET
+   57        | ADADSABET DOWNTO_KW ADADSABET
+
+   58 onsor_mored: MORED_KW ADADSABET COLON_KW block
+   59            | onsor_mored MORED_KW ADADSABET COLON_KW block
+
+   60 default: DEFAULT_KW COLON_KW block
+
+   61 ebarat: ebarat_sabet
+   62       | ebarat_bool
+   63       | ebarat_riazi
+   64       | SHENASE
+   65       | SHENASE RANGE_START ebarat RANGE_END
+   66       | SHENASE LP_KW arguments_list RP_KW
+   67       | SHENASE LP_KW RP_KW
+   68       | LP_KW ebarat RP_KW
+
+   69 ebarat_sabet: ADADSABET
+   70             | REALCONST
+   71             | HARF
+   72             | BOOLSABET
+
+   73 ebarat_riazi: zojmoratab PLUS
+   74             | zojmoratab MINUS
+   75             | zojmoratab MULTP
+   76             | zojmoratab DIVIDE
+   77             | zojmoratab MOD
+   78             | MINUS ebarat
+
+   79 ebarat_bool: zojmoratab VA_KW
+   80            | zojmoratab YA_KW
+   81            | zojmoratab VAANGAH_KW
+   82            | zojmoratab YAVAGARNA_KW
+   83            | zojmoratab LT_KW
+   84            | zojmoratab LTE_KW
+   85            | zojmoratab GT_KW
+   86            | zojmoratab GTE_KW
+   87            | zojmoratab EQ_KW
+   88            | zojmoratab NEQ_KW
+   89            | ebarat NAGHIZ_KW
+
+   90 zojmoratab: LP_KW ebarat COMMA_KW ebarat RP_KW
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+SHENASE (258) 1 2 3 4 16 17 18 19 28 29 41 44 45 48 49 50 64 65 66
+    67
+HARF (259) 71
+ADADSABET (260) 18 20 56 57 58 59 69
+REALCONST (261) 70
+BOOLSABET (262) 72
+SEMICOLON_KW (263) 7 28 29 33 34 35 36
+COLON_KW (264) 58 59 60
+COMMA_KW (265) 13 24 54 90
+TWO_DOTS_KW (266) 19 20 21
+LP_KW (267) 30 31 48 49 66 67 68 90
+RP_KW (268) 30 31 48 49 66 67 68 90
+PLUS (269) 73
+MINUS (270) 74 78
+MULTP (271) 75
+DIVIDE (272) 76
+MOD (273) 77
+BLOCK_START (274) 23 28 29 32
+BLOCK_END (275) 23 28 29 32
+RANGE_START (276) 17 18 50 65
+RANGE_END (277) 17 18 50 65
+NEQ_KW (278) 88
+GT_KW (279) 85
+GTE_KW (280) 86
+LT_KW (281) 83
+LTE_KW (282) 84
+EQ_KW (283) 87
+ASSIGN_KW (284) 15 41 44 45 50
+INT_KW (285) 8
+FLOAT_KW (286) 9
+CHAR_KW (287) 10
+BOOLEAN_KW (288) 11
+PROGRAM_KW (289) 1 2 3 4
+MAIN_KW (290) 1 2 3 4
+AGAR_KW (291) 37 38 39 40
+ANGAH_KW (292) 37 38 39 40
+VAGARNA_KW (293) 39 40
+DO_KW (294) 42 43 44 45
+WHILE_KW (295) 42 43
+FOR_KW (296) 44 45
+GOZINESH_KW (297) 46 47
+MORED_KW (298) 58 59
+END_KW (299) 46 47
+EXIT_KW (300) 52
+WHEN_KW (301) 52
+DEFAULT_KW (302) 60
+UPTO_KW (303) 56
+DOWNTO_KW (304) 57
+VA_KW (305) 79
+YA_KW (306) 80
+VAANGAH_KW (307) 81
+YAVAGARNA_KW (308) 82
+RAVIE_KW (309) 28 29
+NAGHIZ_KW (310) 89
+BAZGASHT_KW (311) 51
+
+
+Nonterminals, with rules where they appear
+
+$accept (57)
+    on left: 0
+program (58)
+    on left: 1 2 3 4, on right: 0
+declarations_list (59)
+    on left: 5 6, on right: 1 3 5 29 31
+declarations (60)
+    on left: 7, on right: 5 6
+taeen_type (61)
+    on left: 8 9 10 11, on right: 7
+declarator_list (62)
+    on left: 12 13, on right: 7 13
+declarator (63)
+    on left: 14 15, on right: 12 13
+dec (64)
+    on left: 16 17 18, on right: 14 15
+range (65)
+    on left: 19 20 21, on right: 17
+meghdar_avalie (66)
+    on left: 22 23, on right: 15
+list_meghdar_avalie (67)
+    on left: 24 25, on right: 23 24
+list_ravie (68)
+    on left: 26 27, on right: 1 2 27
+ravie (69)
+    on left: 28 29, on right: 26 27
+parameters (70)
+    on left: 30 31, on right: 28 29
+block (71)
+    on left: 32, on right: 1 2 3 4 28 29 53 58 59 60
+statement_list (72)
+    on left: 33 34 35 36, on right: 32 35 36
+statement (73)
+    on left: 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53, on right:
+    34 35 38 39 40 42 44
+arguments_list (74)
+    on left: 54 55, on right: 48 54 66
+counter (75)
+    on left: 56 57, on right: 44 45
+onsor_mored (76)
+    on left: 58 59, on right: 46 47 59
+default (77)
+    on left: 60, on right: 46
+ebarat (78)
+    on left: 61 62 63 64 65 66 67 68, on right: 41 46 47 50 51 54 55
+    65 68 78 89 90
+ebarat_sabet (79)
+    on left: 69 70 71 72, on right: 22 24 25 61
+ebarat_riazi (80)
+    on left: 73 74 75 76 77 78, on right: 21 63
+ebarat_bool (81)
+    on left: 79 80 81 82 83 84 85 86 87 88 89, on right: 37 38 39 40
+    42 43 52 62
+zojmoratab (82)
+    on left: 90, on right: 73 74 75 76 77 79 80 81 82 83 84 85 86 87
+    88
+
+
+state 0
+
+    0 $accept: . program $end
+
+    PROGRAM_KW  shift, and go to state 1
+
+    program  go to state 2
+
+
+state 1
+
+    1 program: PROGRAM_KW . SHENASE declarations_list list_ravie MAIN_KW block
+    2        | PROGRAM_KW . SHENASE list_ravie MAIN_KW block
+    3        | PROGRAM_KW . SHENASE declarations_list MAIN_KW block
+    4        | PROGRAM_KW . SHENASE MAIN_KW block
+
+    SHENASE  shift, and go to state 3
+
+
+state 2
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 4
+
+
+state 3
+
+    1 program: PROGRAM_KW SHENASE . declarations_list list_ravie MAIN_KW block
+    2        | PROGRAM_KW SHENASE . list_ravie MAIN_KW block
+    3        | PROGRAM_KW SHENASE . declarations_list MAIN_KW block
+    4        | PROGRAM_KW SHENASE . MAIN_KW block
+
+    INT_KW      shift, and go to state 5
+    FLOAT_KW    shift, and go to state 6
+    CHAR_KW     shift, and go to state 7
+    BOOLEAN_KW  shift, and go to state 8
+    MAIN_KW     shift, and go to state 9
+    RAVIE_KW    shift, and go to state 10
+
+    declarations_list  go to state 11
+    declarations       go to state 12
+    taeen_type         go to state 13
+    list_ravie         go to state 14
+    ravie              go to state 15
+
+
+state 4
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+state 5
+
+    8 taeen_type: INT_KW .
+
+    $default  reduce using rule 8 (taeen_type)
+
+
+state 6
+
+    9 taeen_type: FLOAT_KW .
+
+    $default  reduce using rule 9 (taeen_type)
+
+
+state 7
+
+   10 taeen_type: CHAR_KW .
+
+    $default  reduce using rule 10 (taeen_type)
+
+
+state 8
+
+   11 taeen_type: BOOLEAN_KW .
+
+    $default  reduce using rule 11 (taeen_type)
+
+
+state 9
+
+    4 program: PROGRAM_KW SHENASE MAIN_KW . block
+
+    BLOCK_START  shift, and go to state 16
+
+    block  go to state 17
+
+
+state 10
+
+   28 ravie: RAVIE_KW . SHENASE parameters BLOCK_START block BLOCK_END SEMICOLON_KW
+   29      | RAVIE_KW . SHENASE parameters BLOCK_START declarations_list block BLOCK_END SEMICOLON_KW
+
+    SHENASE  shift, and go to state 18
+
+
+state 11
+
+    1 program: PROGRAM_KW SHENASE declarations_list . list_ravie MAIN_KW block
+    3        | PROGRAM_KW SHENASE declarations_list . MAIN_KW block
+    5 declarations_list: declarations_list . declarations
+
+    INT_KW      shift, and go to state 5
+    FLOAT_KW    shift, and go to state 6
+    CHAR_KW     shift, and go to state 7
+    BOOLEAN_KW  shift, and go to state 8
+    MAIN_KW     shift, and go to state 19
+    RAVIE_KW    shift, and go to state 10
+
+    declarations  go to state 20
+    taeen_type    go to state 13
+    list_ravie    go to state 21
+    ravie         go to state 15
+
+
+state 12
+
+    6 declarations_list: declarations .
+
+    $default  reduce using rule 6 (declarations_list)
+
+
+state 13
+
+    7 declarations: taeen_type . declarator_list SEMICOLON_KW
+
+    SHENASE  shift, and go to state 22
+
+    declarator_list  go to state 23
+    declarator       go to state 24
+    dec              go to state 25
+
+
+state 14
+
+    2 program: PROGRAM_KW SHENASE list_ravie . MAIN_KW block
+   27 list_ravie: list_ravie . ravie
+
+    MAIN_KW   shift, and go to state 26
+    RAVIE_KW  shift, and go to state 10
+
+    ravie  go to state 27
+
+
+state 15
+
+   26 list_ravie: ravie .
+
+    $default  reduce using rule 26 (list_ravie)
+
+
+state 16
+
+   32 block: BLOCK_START . statement_list BLOCK_END
+
+    SHENASE       shift, and go to state 28
+    SEMICOLON_KW  shift, and go to state 29
+    BLOCK_START   shift, and go to state 16
+    AGAR_KW       shift, and go to state 30
+    DO_KW         shift, and go to state 31
+    FOR_KW        shift, and go to state 32
+    GOZINESH_KW   shift, and go to state 33
+    EXIT_KW       shift, and go to state 34
+    BAZGASHT_KW   shift, and go to state 35
+
+    block           go to state 36
+    statement_list  go to state 37
+    statement       go to state 38
+
+
+state 17
+
+    4 program: PROGRAM_KW SHENASE MAIN_KW block .
+
+    $default  reduce using rule 4 (program)
+
+
+state 18
+
+   28 ravie: RAVIE_KW SHENASE . parameters BLOCK_START block BLOCK_END SEMICOLON_KW
+   29      | RAVIE_KW SHENASE . parameters BLOCK_START declarations_list block BLOCK_END SEMICOLON_KW
+
+    LP_KW  shift, and go to state 39
+
+    parameters  go to state 40
+
+
+state 19
+
+    3 program: PROGRAM_KW SHENASE declarations_list MAIN_KW . block
+
+    BLOCK_START  shift, and go to state 16
+
+    block  go to state 41
+
+
+state 20
+
+    5 declarations_list: declarations_list declarations .
+
+    $default  reduce using rule 5 (declarations_list)
+
+
+state 21
+
+    1 program: PROGRAM_KW SHENASE declarations_list list_ravie . MAIN_KW block
+   27 list_ravie: list_ravie . ravie
+
+    MAIN_KW   shift, and go to state 42
+    RAVIE_KW  shift, and go to state 10
+
+    ravie  go to state 27
+
+
+state 22
+
+   16 dec: SHENASE .
+   17    | SHENASE . RANGE_START range RANGE_END
+   18    | SHENASE . RANGE_START ADADSABET RANGE_END
+
+    RANGE_START  shift, and go to state 43
+
+    $default  reduce using rule 16 (dec)
+
+
+state 23
+
+    7 declarations: taeen_type declarator_list . SEMICOLON_KW
+   13 declarator_list: declarator_list . COMMA_KW declarator
+
+    SEMICOLON_KW  shift, and go to state 44
+    COMMA_KW      shift, and go to state 45
+
+
+state 24
+
+   12 declarator_list: declarator .
+
+    $default  reduce using rule 12 (declarator_list)
+
+
+state 25
+
+   14 declarator: dec .
+   15           | dec . ASSIGN_KW meghdar_avalie
+
+    ASSIGN_KW  shift, and go to state 46
+
+    $default  reduce using rule 14 (declarator)
+
+
+state 26
+
+    2 program: PROGRAM_KW SHENASE list_ravie MAIN_KW . block
+
+    BLOCK_START  shift, and go to state 16
+
+    block  go to state 47
+
+
+state 27
+
+   27 list_ravie: list_ravie ravie .
+
+    $default  reduce using rule 27 (list_ravie)
+
+
+state 28
+
+   41 statement: SHENASE . ASSIGN_KW ebarat
+   48          | SHENASE . LP_KW arguments_list RP_KW
+   49          | SHENASE . LP_KW RP_KW
+   50          | SHENASE . RANGE_START ebarat RANGE_END ASSIGN_KW ebarat
+
+    LP_KW        shift, and go to state 48
+    RANGE_START  shift, and go to state 49
+    ASSIGN_KW    shift, and go to state 50
+
+
+state 29
+
+   33 statement_list: SEMICOLON_KW .
+
+    $default  reduce using rule 33 (statement_list)
+
+
+state 30
+
+   37 statement: AGAR_KW . ebarat_bool ANGAH_KW
+   38          | AGAR_KW . ebarat_bool ANGAH_KW statement
+   39          | AGAR_KW . ebarat_bool ANGAH_KW VAGARNA_KW statement
+   40          | AGAR_KW . ebarat_bool ANGAH_KW statement VAGARNA_KW statement
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 58
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 61
+    zojmoratab    go to state 62
+
+
+state 31
+
+   42 statement: DO_KW . statement WHILE_KW ebarat_bool
+   43          | DO_KW . WHILE_KW ebarat_bool
+
+    SHENASE      shift, and go to state 28
+    BLOCK_START  shift, and go to state 16
+    AGAR_KW      shift, and go to state 30
+    DO_KW        shift, and go to state 31
+    WHILE_KW     shift, and go to state 63
+    FOR_KW       shift, and go to state 32
+    GOZINESH_KW  shift, and go to state 33
+    EXIT_KW      shift, and go to state 34
+    BAZGASHT_KW  shift, and go to state 35
+
+    block      go to state 36
+    statement  go to state 64
+
+
+state 32
+
+   44 statement: FOR_KW . SHENASE ASSIGN_KW counter DO_KW statement
+   45          | FOR_KW . SHENASE ASSIGN_KW counter DO_KW
+
+    SHENASE  shift, and go to state 65
+
+
+state 33
+
+   46 statement: GOZINESH_KW . ebarat onsor_mored default END_KW
+   47          | GOZINESH_KW . ebarat onsor_mored END_KW
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 66
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 67
+    zojmoratab    go to state 62
+
+
+state 34
+
+   52 statement: EXIT_KW . WHEN_KW ebarat_bool
+
+    WHEN_KW  shift, and go to state 68
+
+
+state 35
+
+   51 statement: BAZGASHT_KW . ebarat
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 69
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 67
+    zojmoratab    go to state 62
+
+
+state 36
+
+   53 statement: block .
+
+    $default  reduce using rule 53 (statement)
+
+
+state 37
+
+   32 block: BLOCK_START statement_list . BLOCK_END
+   35 statement_list: statement_list . statement SEMICOLON_KW
+   36               | statement_list . SEMICOLON_KW
+
+    SHENASE       shift, and go to state 28
+    SEMICOLON_KW  shift, and go to state 70
+    BLOCK_START   shift, and go to state 16
+    BLOCK_END     shift, and go to state 71
+    AGAR_KW       shift, and go to state 30
+    DO_KW         shift, and go to state 31
+    FOR_KW        shift, and go to state 32
+    GOZINESH_KW   shift, and go to state 33
+    EXIT_KW       shift, and go to state 34
+    BAZGASHT_KW   shift, and go to state 35
+
+    block      go to state 36
+    statement  go to state 72
+
+
+state 38
+
+   34 statement_list: statement . SEMICOLON_KW
+
+    SEMICOLON_KW  shift, and go to state 73
+
+
+state 39
+
+   30 parameters: LP_KW . RP_KW
+   31           | LP_KW . declarations_list RP_KW
+
+    RP_KW       shift, and go to state 74
+    INT_KW      shift, and go to state 5
+    FLOAT_KW    shift, and go to state 6
+    CHAR_KW     shift, and go to state 7
+    BOOLEAN_KW  shift, and go to state 8
+
+    declarations_list  go to state 75
+    declarations       go to state 12
+    taeen_type         go to state 13
+
+
+state 40
+
+   28 ravie: RAVIE_KW SHENASE parameters . BLOCK_START block BLOCK_END SEMICOLON_KW
+   29      | RAVIE_KW SHENASE parameters . BLOCK_START declarations_list block BLOCK_END SEMICOLON_KW
+
+    BLOCK_START  shift, and go to state 76
+
+
+state 41
+
+    3 program: PROGRAM_KW SHENASE declarations_list MAIN_KW block .
+
+    $default  reduce using rule 3 (program)
+
+
+state 42
+
+    1 program: PROGRAM_KW SHENASE declarations_list list_ravie MAIN_KW . block
+
+    BLOCK_START  shift, and go to state 16
+
+    block  go to state 77
+
+
+state 43
+
+   17 dec: SHENASE RANGE_START . range RANGE_END
+   18    | SHENASE RANGE_START . ADADSABET RANGE_END
+
+    SHENASE    shift, and go to state 78
+    ADADSABET  shift, and go to state 79
+    LP_KW      shift, and go to state 80
+    MINUS      shift, and go to state 57
+
+    range         go to state 81
+    ebarat_riazi  go to state 82
+    zojmoratab    go to state 83
+
+
+state 44
+
+    7 declarations: taeen_type declarator_list SEMICOLON_KW .
+
+    $default  reduce using rule 7 (declarations)
+
+
+state 45
+
+   13 declarator_list: declarator_list COMMA_KW . declarator
+
+    SHENASE  shift, and go to state 22
+
+    declarator  go to state 84
+    dec         go to state 25
+
+
+state 46
+
+   15 declarator: dec ASSIGN_KW . meghdar_avalie
+
+    HARF         shift, and go to state 52
+    ADADSABET    shift, and go to state 53
+    REALCONST    shift, and go to state 54
+    BOOLSABET    shift, and go to state 55
+    BLOCK_START  shift, and go to state 85
+
+    meghdar_avalie  go to state 86
+    ebarat_sabet    go to state 87
+
+
+state 47
+
+    2 program: PROGRAM_KW SHENASE list_ravie MAIN_KW block .
+
+    $default  reduce using rule 2 (program)
+
+
+state 48
+
+   48 statement: SHENASE LP_KW . arguments_list RP_KW
+   49          | SHENASE LP_KW . RP_KW
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    RP_KW      shift, and go to state 88
+    MINUS      shift, and go to state 57
+
+    arguments_list  go to state 89
+    ebarat          go to state 90
+    ebarat_sabet    go to state 59
+    ebarat_riazi    go to state 60
+    ebarat_bool     go to state 67
+    zojmoratab      go to state 62
+
+
+state 49
+
+   50 statement: SHENASE RANGE_START . ebarat RANGE_END ASSIGN_KW ebarat
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 91
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 67
+    zojmoratab    go to state 62
+
+
+state 50
+
+   41 statement: SHENASE ASSIGN_KW . ebarat
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 92
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 67
+    zojmoratab    go to state 62
+
+
+state 51
+
+   64 ebarat: SHENASE .
+   65       | SHENASE . RANGE_START ebarat RANGE_END
+   66       | SHENASE . LP_KW arguments_list RP_KW
+   67       | SHENASE . LP_KW RP_KW
+
+    LP_KW        shift, and go to state 93
+    RANGE_START  shift, and go to state 94
+
+    $default  reduce using rule 64 (ebarat)
+
+
+state 52
+
+   71 ebarat_sabet: HARF .
+
+    $default  reduce using rule 71 (ebarat_sabet)
+
+
+state 53
+
+   69 ebarat_sabet: ADADSABET .
+
+    $default  reduce using rule 69 (ebarat_sabet)
+
+
+state 54
+
+   70 ebarat_sabet: REALCONST .
+
+    $default  reduce using rule 70 (ebarat_sabet)
+
+
+state 55
+
+   72 ebarat_sabet: BOOLSABET .
+
+    $default  reduce using rule 72 (ebarat_sabet)
+
+
+state 56
+
+   68 ebarat: LP_KW . ebarat RP_KW
+   90 zojmoratab: LP_KW . ebarat COMMA_KW ebarat RP_KW
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 95
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 67
+    zojmoratab    go to state 62
+
+
+state 57
+
+   78 ebarat_riazi: MINUS . ebarat
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 96
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 67
+    zojmoratab    go to state 62
+
+
+state 58
+
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+
+    NAGHIZ_KW  shift, and go to state 97
+
+
+state 59
+
+   61 ebarat: ebarat_sabet .
+
+    $default  reduce using rule 61 (ebarat)
+
+
+state 60
+
+   63 ebarat: ebarat_riazi .
+
+    $default  reduce using rule 63 (ebarat)
+
+
+state 61
+
+   37 statement: AGAR_KW ebarat_bool . ANGAH_KW
+   38          | AGAR_KW ebarat_bool . ANGAH_KW statement
+   39          | AGAR_KW ebarat_bool . ANGAH_KW VAGARNA_KW statement
+   40          | AGAR_KW ebarat_bool . ANGAH_KW statement VAGARNA_KW statement
+   62 ebarat: ebarat_bool .
+
+    ANGAH_KW  shift, and go to state 98
+
+    $default  reduce using rule 62 (ebarat)
+
+
+state 62
+
+   73 ebarat_riazi: zojmoratab . PLUS
+   74             | zojmoratab . MINUS
+   75             | zojmoratab . MULTP
+   76             | zojmoratab . DIVIDE
+   77             | zojmoratab . MOD
+   79 ebarat_bool: zojmoratab . VA_KW
+   80            | zojmoratab . YA_KW
+   81            | zojmoratab . VAANGAH_KW
+   82            | zojmoratab . YAVAGARNA_KW
+   83            | zojmoratab . LT_KW
+   84            | zojmoratab . LTE_KW
+   85            | zojmoratab . GT_KW
+   86            | zojmoratab . GTE_KW
+   87            | zojmoratab . EQ_KW
+   88            | zojmoratab . NEQ_KW
+
+    PLUS          shift, and go to state 99
+    MINUS         shift, and go to state 100
+    MULTP         shift, and go to state 101
+    DIVIDE        shift, and go to state 102
+    MOD           shift, and go to state 103
+    NEQ_KW        shift, and go to state 104
+    GT_KW         shift, and go to state 105
+    GTE_KW        shift, and go to state 106
+    LT_KW         shift, and go to state 107
+    LTE_KW        shift, and go to state 108
+    EQ_KW         shift, and go to state 109
+    VA_KW         shift, and go to state 110
+    YA_KW         shift, and go to state 111
+    VAANGAH_KW    shift, and go to state 112
+    YAVAGARNA_KW  shift, and go to state 113
+
+
+state 63
+
+   43 statement: DO_KW WHILE_KW . ebarat_bool
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 58
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 114
+    zojmoratab    go to state 62
+
+
+state 64
+
+   42 statement: DO_KW statement . WHILE_KW ebarat_bool
+
+    WHILE_KW  shift, and go to state 115
+
+
+state 65
+
+   44 statement: FOR_KW SHENASE . ASSIGN_KW counter DO_KW statement
+   45          | FOR_KW SHENASE . ASSIGN_KW counter DO_KW
+
+    ASSIGN_KW  shift, and go to state 116
+
+
+state 66
+
+   46 statement: GOZINESH_KW ebarat . onsor_mored default END_KW
+   47          | GOZINESH_KW ebarat . onsor_mored END_KW
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+
+    MORED_KW   shift, and go to state 117
+    NAGHIZ_KW  shift, and go to state 97
+
+    onsor_mored  go to state 118
+
+
+state 67
+
+   62 ebarat: ebarat_bool .
+
+    $default  reduce using rule 62 (ebarat)
+
+
+state 68
+
+   52 statement: EXIT_KW WHEN_KW . ebarat_bool
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 58
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 119
+    zojmoratab    go to state 62
+
+
+state 69
+
+   51 statement: BAZGASHT_KW ebarat .
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+
+    NAGHIZ_KW  shift, and go to state 97
+
+    $default  reduce using rule 51 (statement)
+
+
+state 70
+
+   36 statement_list: statement_list SEMICOLON_KW .
+
+    $default  reduce using rule 36 (statement_list)
+
+
+state 71
+
+   32 block: BLOCK_START statement_list BLOCK_END .
+
+    $default  reduce using rule 32 (block)
+
+
+state 72
+
+   35 statement_list: statement_list statement . SEMICOLON_KW
+
+    SEMICOLON_KW  shift, and go to state 120
+
+
+state 73
+
+   34 statement_list: statement SEMICOLON_KW .
+
+    $default  reduce using rule 34 (statement_list)
+
+
+state 74
+
+   30 parameters: LP_KW RP_KW .
+
+    $default  reduce using rule 30 (parameters)
+
+
+state 75
+
+    5 declarations_list: declarations_list . declarations
+   31 parameters: LP_KW declarations_list . RP_KW
+
+    RP_KW       shift, and go to state 121
+    INT_KW      shift, and go to state 5
+    FLOAT_KW    shift, and go to state 6
+    CHAR_KW     shift, and go to state 7
+    BOOLEAN_KW  shift, and go to state 8
+
+    declarations  go to state 20
+    taeen_type    go to state 13
+
+
+state 76
+
+   28 ravie: RAVIE_KW SHENASE parameters BLOCK_START . block BLOCK_END SEMICOLON_KW
+   29      | RAVIE_KW SHENASE parameters BLOCK_START . declarations_list block BLOCK_END SEMICOLON_KW
+
+    BLOCK_START  shift, and go to state 16
+    INT_KW       shift, and go to state 5
+    FLOAT_KW     shift, and go to state 6
+    CHAR_KW      shift, and go to state 7
+    BOOLEAN_KW   shift, and go to state 8
+
+    declarations_list  go to state 122
+    declarations       go to state 12
+    taeen_type         go to state 13
+    block              go to state 123
+
+
+state 77
+
+    1 program: PROGRAM_KW SHENASE declarations_list list_ravie MAIN_KW block .
+
+    $default  reduce using rule 1 (program)
+
+
+state 78
+
+   19 range: SHENASE . TWO_DOTS_KW SHENASE
+
+    TWO_DOTS_KW  shift, and go to state 124
+
+
+state 79
+
+   18 dec: SHENASE RANGE_START ADADSABET . RANGE_END
+   20 range: ADADSABET . TWO_DOTS_KW ADADSABET
+
+    TWO_DOTS_KW  shift, and go to state 125
+    RANGE_END    shift, and go to state 126
+
+
+state 80
+
+   90 zojmoratab: LP_KW . ebarat COMMA_KW ebarat RP_KW
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 127
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 67
+    zojmoratab    go to state 62
+
+
+state 81
+
+   17 dec: SHENASE RANGE_START range . RANGE_END
+
+    RANGE_END  shift, and go to state 128
+
+
+state 82
+
+   21 range: ebarat_riazi . TWO_DOTS_KW ebarat_riazi
+
+    TWO_DOTS_KW  shift, and go to state 129
+
+
+state 83
+
+   73 ebarat_riazi: zojmoratab . PLUS
+   74             | zojmoratab . MINUS
+   75             | zojmoratab . MULTP
+   76             | zojmoratab . DIVIDE
+   77             | zojmoratab . MOD
+
+    PLUS    shift, and go to state 99
+    MINUS   shift, and go to state 100
+    MULTP   shift, and go to state 101
+    DIVIDE  shift, and go to state 102
+    MOD     shift, and go to state 103
+
+
+state 84
+
+   13 declarator_list: declarator_list COMMA_KW declarator .
+
+    $default  reduce using rule 13 (declarator_list)
+
+
+state 85
+
+   23 meghdar_avalie: BLOCK_START . list_meghdar_avalie BLOCK_END
+
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+
+    list_meghdar_avalie  go to state 130
+    ebarat_sabet         go to state 131
+
+
+state 86
+
+   15 declarator: dec ASSIGN_KW meghdar_avalie .
+
+    $default  reduce using rule 15 (declarator)
+
+
+state 87
+
+   22 meghdar_avalie: ebarat_sabet .
+
+    $default  reduce using rule 22 (meghdar_avalie)
+
+
+state 88
+
+   49 statement: SHENASE LP_KW RP_KW .
+
+    $default  reduce using rule 49 (statement)
+
+
+state 89
+
+   48 statement: SHENASE LP_KW arguments_list . RP_KW
+   54 arguments_list: arguments_list . COMMA_KW ebarat
+
+    COMMA_KW  shift, and go to state 132
+    RP_KW     shift, and go to state 133
+
+
+state 90
+
+   55 arguments_list: ebarat .
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+
+    NAGHIZ_KW  shift, and go to state 97
+
+    $default  reduce using rule 55 (arguments_list)
+
+
+state 91
+
+   50 statement: SHENASE RANGE_START ebarat . RANGE_END ASSIGN_KW ebarat
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+
+    RANGE_END  shift, and go to state 134
+    NAGHIZ_KW  shift, and go to state 97
+
+
+state 92
+
+   41 statement: SHENASE ASSIGN_KW ebarat .
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+
+    NAGHIZ_KW  shift, and go to state 97
+
+    $default  reduce using rule 41 (statement)
+
+
+state 93
+
+   66 ebarat: SHENASE LP_KW . arguments_list RP_KW
+   67       | SHENASE LP_KW . RP_KW
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    RP_KW      shift, and go to state 135
+    MINUS      shift, and go to state 57
+
+    arguments_list  go to state 136
+    ebarat          go to state 90
+    ebarat_sabet    go to state 59
+    ebarat_riazi    go to state 60
+    ebarat_bool     go to state 67
+    zojmoratab      go to state 62
+
+
+state 94
+
+   65 ebarat: SHENASE RANGE_START . ebarat RANGE_END
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 137
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 67
+    zojmoratab    go to state 62
+
+
+state 95
+
+   68 ebarat: LP_KW ebarat . RP_KW
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+   90 zojmoratab: LP_KW ebarat . COMMA_KW ebarat RP_KW
+
+    COMMA_KW   shift, and go to state 138
+    RP_KW      shift, and go to state 139
+    NAGHIZ_KW  shift, and go to state 97
+
+
+state 96
+
+   78 ebarat_riazi: MINUS ebarat .
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+
+    NAGHIZ_KW  shift, and go to state 97
+
+    $default  reduce using rule 78 (ebarat_riazi)
+
+
+state 97
+
+   89 ebarat_bool: ebarat NAGHIZ_KW .
+
+    $default  reduce using rule 89 (ebarat_bool)
+
+
+state 98
+
+   37 statement: AGAR_KW ebarat_bool ANGAH_KW .
+   38          | AGAR_KW ebarat_bool ANGAH_KW . statement
+   39          | AGAR_KW ebarat_bool ANGAH_KW . VAGARNA_KW statement
+   40          | AGAR_KW ebarat_bool ANGAH_KW . statement VAGARNA_KW statement
+
+    SHENASE      shift, and go to state 28
+    BLOCK_START  shift, and go to state 16
+    AGAR_KW      shift, and go to state 30
+    VAGARNA_KW   shift, and go to state 140
+    DO_KW        shift, and go to state 31
+    FOR_KW       shift, and go to state 32
+    GOZINESH_KW  shift, and go to state 33
+    EXIT_KW      shift, and go to state 34
+    BAZGASHT_KW  shift, and go to state 35
+
+    $default  reduce using rule 37 (statement)
+
+    block      go to state 36
+    statement  go to state 141
+
+
+state 99
+
+   73 ebarat_riazi: zojmoratab PLUS .
+
+    $default  reduce using rule 73 (ebarat_riazi)
+
+
+state 100
+
+   74 ebarat_riazi: zojmoratab MINUS .
+
+    $default  reduce using rule 74 (ebarat_riazi)
+
+
+state 101
+
+   75 ebarat_riazi: zojmoratab MULTP .
+
+    $default  reduce using rule 75 (ebarat_riazi)
+
+
+state 102
+
+   76 ebarat_riazi: zojmoratab DIVIDE .
+
+    $default  reduce using rule 76 (ebarat_riazi)
+
+
+state 103
+
+   77 ebarat_riazi: zojmoratab MOD .
+
+    $default  reduce using rule 77 (ebarat_riazi)
+
+
+state 104
+
+   88 ebarat_bool: zojmoratab NEQ_KW .
+
+    $default  reduce using rule 88 (ebarat_bool)
+
+
+state 105
+
+   85 ebarat_bool: zojmoratab GT_KW .
+
+    $default  reduce using rule 85 (ebarat_bool)
+
+
+state 106
+
+   86 ebarat_bool: zojmoratab GTE_KW .
+
+    $default  reduce using rule 86 (ebarat_bool)
+
+
+state 107
+
+   83 ebarat_bool: zojmoratab LT_KW .
+
+    $default  reduce using rule 83 (ebarat_bool)
+
+
+state 108
+
+   84 ebarat_bool: zojmoratab LTE_KW .
+
+    $default  reduce using rule 84 (ebarat_bool)
+
+
+state 109
+
+   87 ebarat_bool: zojmoratab EQ_KW .
+
+    $default  reduce using rule 87 (ebarat_bool)
+
+
+state 110
+
+   79 ebarat_bool: zojmoratab VA_KW .
+
+    $default  reduce using rule 79 (ebarat_bool)
+
+
+state 111
+
+   80 ebarat_bool: zojmoratab YA_KW .
+
+    $default  reduce using rule 80 (ebarat_bool)
+
+
+state 112
+
+   81 ebarat_bool: zojmoratab VAANGAH_KW .
+
+    $default  reduce using rule 81 (ebarat_bool)
+
+
+state 113
+
+   82 ebarat_bool: zojmoratab YAVAGARNA_KW .
+
+    $default  reduce using rule 82 (ebarat_bool)
+
+
+state 114
+
+   43 statement: DO_KW WHILE_KW ebarat_bool .
+   62 ebarat: ebarat_bool .
+
+    NAGHIZ_KW  reduce using rule 62 (ebarat)
+    $default   reduce using rule 43 (statement)
+
+
+state 115
+
+   42 statement: DO_KW statement WHILE_KW . ebarat_bool
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 58
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 142
+    zojmoratab    go to state 62
+
+
+state 116
+
+   44 statement: FOR_KW SHENASE ASSIGN_KW . counter DO_KW statement
+   45          | FOR_KW SHENASE ASSIGN_KW . counter DO_KW
+
+    ADADSABET  shift, and go to state 143
+
+    counter  go to state 144
+
+
+state 117
+
+   58 onsor_mored: MORED_KW . ADADSABET COLON_KW block
+
+    ADADSABET  shift, and go to state 145
+
+
+state 118
+
+   46 statement: GOZINESH_KW ebarat onsor_mored . default END_KW
+   47          | GOZINESH_KW ebarat onsor_mored . END_KW
+   59 onsor_mored: onsor_mored . MORED_KW ADADSABET COLON_KW block
+
+    MORED_KW    shift, and go to state 146
+    END_KW      shift, and go to state 147
+    DEFAULT_KW  shift, and go to state 148
+
+    default  go to state 149
+
+
+state 119
+
+   52 statement: EXIT_KW WHEN_KW ebarat_bool .
+   62 ebarat: ebarat_bool .
+
+    NAGHIZ_KW  reduce using rule 62 (ebarat)
+    $default   reduce using rule 52 (statement)
+
+
+state 120
+
+   35 statement_list: statement_list statement SEMICOLON_KW .
+
+    $default  reduce using rule 35 (statement_list)
+
+
+state 121
+
+   31 parameters: LP_KW declarations_list RP_KW .
+
+    $default  reduce using rule 31 (parameters)
+
+
+state 122
+
+    5 declarations_list: declarations_list . declarations
+   29 ravie: RAVIE_KW SHENASE parameters BLOCK_START declarations_list . block BLOCK_END SEMICOLON_KW
+
+    BLOCK_START  shift, and go to state 16
+    INT_KW       shift, and go to state 5
+    FLOAT_KW     shift, and go to state 6
+    CHAR_KW      shift, and go to state 7
+    BOOLEAN_KW   shift, and go to state 8
+
+    declarations  go to state 20
+    taeen_type    go to state 13
+    block         go to state 150
+
+
+state 123
+
+   28 ravie: RAVIE_KW SHENASE parameters BLOCK_START block . BLOCK_END SEMICOLON_KW
+
+    BLOCK_END  shift, and go to state 151
+
+
+state 124
+
+   19 range: SHENASE TWO_DOTS_KW . SHENASE
+
+    SHENASE  shift, and go to state 152
+
+
+state 125
+
+   20 range: ADADSABET TWO_DOTS_KW . ADADSABET
+
+    ADADSABET  shift, and go to state 153
+
+
+state 126
+
+   18 dec: SHENASE RANGE_START ADADSABET RANGE_END .
+
+    $default  reduce using rule 18 (dec)
+
+
+state 127
+
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+   90 zojmoratab: LP_KW ebarat . COMMA_KW ebarat RP_KW
+
+    COMMA_KW   shift, and go to state 138
+    NAGHIZ_KW  shift, and go to state 97
+
+
+state 128
+
+   17 dec: SHENASE RANGE_START range RANGE_END .
+
+    $default  reduce using rule 17 (dec)
+
+
+state 129
+
+   21 range: ebarat_riazi TWO_DOTS_KW . ebarat_riazi
+
+    LP_KW  shift, and go to state 80
+    MINUS  shift, and go to state 57
+
+    ebarat_riazi  go to state 154
+    zojmoratab    go to state 83
+
+
+state 130
+
+   23 meghdar_avalie: BLOCK_START list_meghdar_avalie . BLOCK_END
+
+    BLOCK_END  shift, and go to state 155
+
+
+state 131
+
+   24 list_meghdar_avalie: ebarat_sabet . COMMA_KW list_meghdar_avalie
+   25                    | ebarat_sabet .
+
+    COMMA_KW  shift, and go to state 156
+
+    $default  reduce using rule 25 (list_meghdar_avalie)
+
+
+state 132
+
+   54 arguments_list: arguments_list COMMA_KW . ebarat
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 157
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 67
+    zojmoratab    go to state 62
+
+
+state 133
+
+   48 statement: SHENASE LP_KW arguments_list RP_KW .
+
+    $default  reduce using rule 48 (statement)
+
+
+state 134
+
+   50 statement: SHENASE RANGE_START ebarat RANGE_END . ASSIGN_KW ebarat
+
+    ASSIGN_KW  shift, and go to state 158
+
+
+state 135
+
+   67 ebarat: SHENASE LP_KW RP_KW .
+
+    $default  reduce using rule 67 (ebarat)
+
+
+state 136
+
+   54 arguments_list: arguments_list . COMMA_KW ebarat
+   66 ebarat: SHENASE LP_KW arguments_list . RP_KW
+
+    COMMA_KW  shift, and go to state 132
+    RP_KW     shift, and go to state 159
+
+
+state 137
+
+   65 ebarat: SHENASE RANGE_START ebarat . RANGE_END
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+
+    RANGE_END  shift, and go to state 160
+    NAGHIZ_KW  shift, and go to state 97
+
+
+state 138
+
+   90 zojmoratab: LP_KW ebarat COMMA_KW . ebarat RP_KW
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 161
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 67
+    zojmoratab    go to state 62
+
+
+state 139
+
+   68 ebarat: LP_KW ebarat RP_KW .
+
+    $default  reduce using rule 68 (ebarat)
+
+
+state 140
+
+   39 statement: AGAR_KW ebarat_bool ANGAH_KW VAGARNA_KW . statement
+
+    SHENASE      shift, and go to state 28
+    BLOCK_START  shift, and go to state 16
+    AGAR_KW      shift, and go to state 30
+    DO_KW        shift, and go to state 31
+    FOR_KW       shift, and go to state 32
+    GOZINESH_KW  shift, and go to state 33
+    EXIT_KW      shift, and go to state 34
+    BAZGASHT_KW  shift, and go to state 35
+
+    block      go to state 36
+    statement  go to state 162
+
+
+state 141
+
+   38 statement: AGAR_KW ebarat_bool ANGAH_KW statement .
+   40          | AGAR_KW ebarat_bool ANGAH_KW statement . VAGARNA_KW statement
+
+    VAGARNA_KW  shift, and go to state 163
+
+    $default  reduce using rule 38 (statement)
+
+
+state 142
+
+   42 statement: DO_KW statement WHILE_KW ebarat_bool .
+   62 ebarat: ebarat_bool .
+
+    NAGHIZ_KW  reduce using rule 62 (ebarat)
+    $default   reduce using rule 42 (statement)
+
+
+state 143
+
+   56 counter: ADADSABET . UPTO_KW ADADSABET
+   57        | ADADSABET . DOWNTO_KW ADADSABET
+
+    UPTO_KW    shift, and go to state 164
+    DOWNTO_KW  shift, and go to state 165
+
+
+state 144
+
+   44 statement: FOR_KW SHENASE ASSIGN_KW counter . DO_KW statement
+   45          | FOR_KW SHENASE ASSIGN_KW counter . DO_KW
+
+    DO_KW  shift, and go to state 166
+
+
+state 145
+
+   58 onsor_mored: MORED_KW ADADSABET . COLON_KW block
+
+    COLON_KW  shift, and go to state 167
+
+
+state 146
+
+   59 onsor_mored: onsor_mored MORED_KW . ADADSABET COLON_KW block
+
+    ADADSABET  shift, and go to state 168
+
+
+state 147
+
+   47 statement: GOZINESH_KW ebarat onsor_mored END_KW .
+
+    $default  reduce using rule 47 (statement)
+
+
+state 148
+
+   60 default: DEFAULT_KW . COLON_KW block
+
+    COLON_KW  shift, and go to state 169
+
+
+state 149
+
+   46 statement: GOZINESH_KW ebarat onsor_mored default . END_KW
+
+    END_KW  shift, and go to state 170
+
+
+state 150
+
+   29 ravie: RAVIE_KW SHENASE parameters BLOCK_START declarations_list block . BLOCK_END SEMICOLON_KW
+
+    BLOCK_END  shift, and go to state 171
+
+
+state 151
+
+   28 ravie: RAVIE_KW SHENASE parameters BLOCK_START block BLOCK_END . SEMICOLON_KW
+
+    SEMICOLON_KW  shift, and go to state 172
+
+
+state 152
+
+   19 range: SHENASE TWO_DOTS_KW SHENASE .
+
+    $default  reduce using rule 19 (range)
+
+
+state 153
+
+   20 range: ADADSABET TWO_DOTS_KW ADADSABET .
+
+    $default  reduce using rule 20 (range)
+
+
+state 154
+
+   21 range: ebarat_riazi TWO_DOTS_KW ebarat_riazi .
+
+    $default  reduce using rule 21 (range)
+
+
+state 155
+
+   23 meghdar_avalie: BLOCK_START list_meghdar_avalie BLOCK_END .
+
+    $default  reduce using rule 23 (meghdar_avalie)
+
+
+state 156
+
+   24 list_meghdar_avalie: ebarat_sabet COMMA_KW . list_meghdar_avalie
+
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+
+    list_meghdar_avalie  go to state 173
+    ebarat_sabet         go to state 131
+
+
+state 157
+
+   54 arguments_list: arguments_list COMMA_KW ebarat .
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+
+    NAGHIZ_KW  shift, and go to state 97
+
+    $default  reduce using rule 54 (arguments_list)
+
+
+state 158
+
+   50 statement: SHENASE RANGE_START ebarat RANGE_END ASSIGN_KW . ebarat
+
+    SHENASE    shift, and go to state 51
+    HARF       shift, and go to state 52
+    ADADSABET  shift, and go to state 53
+    REALCONST  shift, and go to state 54
+    BOOLSABET  shift, and go to state 55
+    LP_KW      shift, and go to state 56
+    MINUS      shift, and go to state 57
+
+    ebarat        go to state 174
+    ebarat_sabet  go to state 59
+    ebarat_riazi  go to state 60
+    ebarat_bool   go to state 67
+    zojmoratab    go to state 62
+
+
+state 159
+
+   66 ebarat: SHENASE LP_KW arguments_list RP_KW .
+
+    $default  reduce using rule 66 (ebarat)
+
+
+state 160
+
+   65 ebarat: SHENASE RANGE_START ebarat RANGE_END .
+
+    $default  reduce using rule 65 (ebarat)
+
+
+state 161
+
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+   90 zojmoratab: LP_KW ebarat COMMA_KW ebarat . RP_KW
+
+    RP_KW      shift, and go to state 175
+    NAGHIZ_KW  shift, and go to state 97
+
+
+state 162
+
+   39 statement: AGAR_KW ebarat_bool ANGAH_KW VAGARNA_KW statement .
+
+    $default  reduce using rule 39 (statement)
+
+
+state 163
+
+   40 statement: AGAR_KW ebarat_bool ANGAH_KW statement VAGARNA_KW . statement
+
+    SHENASE      shift, and go to state 28
+    BLOCK_START  shift, and go to state 16
+    AGAR_KW      shift, and go to state 30
+    DO_KW        shift, and go to state 31
+    FOR_KW       shift, and go to state 32
+    GOZINESH_KW  shift, and go to state 33
+    EXIT_KW      shift, and go to state 34
+    BAZGASHT_KW  shift, and go to state 35
+
+    block      go to state 36
+    statement  go to state 176
+
+
+state 164
+
+   56 counter: ADADSABET UPTO_KW . ADADSABET
+
+    ADADSABET  shift, and go to state 177
+
+
+state 165
+
+   57 counter: ADADSABET DOWNTO_KW . ADADSABET
+
+    ADADSABET  shift, and go to state 178
+
+
+state 166
+
+   44 statement: FOR_KW SHENASE ASSIGN_KW counter DO_KW . statement
+   45          | FOR_KW SHENASE ASSIGN_KW counter DO_KW .
+
+    SHENASE      shift, and go to state 28
+    BLOCK_START  shift, and go to state 16
+    AGAR_KW      shift, and go to state 30
+    DO_KW        shift, and go to state 31
+    FOR_KW       shift, and go to state 32
+    GOZINESH_KW  shift, and go to state 33
+    EXIT_KW      shift, and go to state 34
+    BAZGASHT_KW  shift, and go to state 35
+
+    $default  reduce using rule 45 (statement)
+
+    block      go to state 36
+    statement  go to state 179
+
+
+state 167
+
+   58 onsor_mored: MORED_KW ADADSABET COLON_KW . block
+
+    BLOCK_START  shift, and go to state 16
+
+    block  go to state 180
+
+
+state 168
+
+   59 onsor_mored: onsor_mored MORED_KW ADADSABET . COLON_KW block
+
+    COLON_KW  shift, and go to state 181
+
+
+state 169
+
+   60 default: DEFAULT_KW COLON_KW . block
+
+    BLOCK_START  shift, and go to state 16
+
+    block  go to state 182
+
+
+state 170
+
+   46 statement: GOZINESH_KW ebarat onsor_mored default END_KW .
+
+    $default  reduce using rule 46 (statement)
+
+
+state 171
+
+   29 ravie: RAVIE_KW SHENASE parameters BLOCK_START declarations_list block BLOCK_END . SEMICOLON_KW
+
+    SEMICOLON_KW  shift, and go to state 183
+
+
+state 172
+
+   28 ravie: RAVIE_KW SHENASE parameters BLOCK_START block BLOCK_END SEMICOLON_KW .
+
+    $default  reduce using rule 28 (ravie)
+
+
+state 173
+
+   24 list_meghdar_avalie: ebarat_sabet COMMA_KW list_meghdar_avalie .
+
+    $default  reduce using rule 24 (list_meghdar_avalie)
+
+
+state 174
+
+   50 statement: SHENASE RANGE_START ebarat RANGE_END ASSIGN_KW ebarat .
+   89 ebarat_bool: ebarat . NAGHIZ_KW
+
+    NAGHIZ_KW  shift, and go to state 97
+
+    $default  reduce using rule 50 (statement)
+
+
+state 175
+
+   90 zojmoratab: LP_KW ebarat COMMA_KW ebarat RP_KW .
+
+    $default  reduce using rule 90 (zojmoratab)
+
+
+state 176
+
+   40 statement: AGAR_KW ebarat_bool ANGAH_KW statement VAGARNA_KW statement .
+
+    $default  reduce using rule 40 (statement)
+
+
+state 177
+
+   56 counter: ADADSABET UPTO_KW ADADSABET .
+
+    $default  reduce using rule 56 (counter)
+
+
+state 178
+
+   57 counter: ADADSABET DOWNTO_KW ADADSABET .
+
+    $default  reduce using rule 57 (counter)
+
+
+state 179
+
+   44 statement: FOR_KW SHENASE ASSIGN_KW counter DO_KW statement .
+
+    $default  reduce using rule 44 (statement)
+
+
+state 180
+
+   58 onsor_mored: MORED_KW ADADSABET COLON_KW block .
+
+    $default  reduce using rule 58 (onsor_mored)
+
+
+state 181
+
+   59 onsor_mored: onsor_mored MORED_KW ADADSABET COLON_KW . block
+
+    BLOCK_START  shift, and go to state 16
+
+    block  go to state 184
+
+
+state 182
+
+   60 default: DEFAULT_KW COLON_KW block .
+
+    $default  reduce using rule 60 (default)
+
+
+state 183
+
+   29 ravie: RAVIE_KW SHENASE parameters BLOCK_START declarations_list block BLOCK_END SEMICOLON_KW .
+
+    $default  reduce using rule 29 (ravie)
+
+
+state 184
+
+   59 onsor_mored: onsor_mored MORED_KW ADADSABET COLON_KW block .
+
+    $default  reduce using rule 59 (onsor_mored)

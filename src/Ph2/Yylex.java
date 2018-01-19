@@ -61,16 +61,16 @@ class Yylex {
     "\1\6\1\7\1\10\1\11\1\12\1\13\1\14\1\15"+
     "\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25"+
     "\13\1\3\0\1\26\12\0\1\27\1\30\1\31\1\32"+
-    "\1\33\10\0\1\34\1\0\1\35\1\0\1\36\1\37"+
-    "\1\40\4\0\1\41\3\0\1\42\2\0\1\43\17\0"+
+    "\1\33\11\0\1\34\1\0\1\35\1\0\1\36\1\37"+
+    "\1\40\4\0\1\41\3\0\1\42\2\0\1\43\20\0"+
     "\1\44\1\0\1\45\1\46\2\0\1\47\1\0\1\50"+
-    "\11\0\1\51\3\0\1\52\1\53\1\54\5\0\1\55"+
-    "\4\0\1\56\1\0\1\57\1\60\7\0\1\61\2\0"+
-    "\1\62\1\63\1\0\1\64\1\0\1\65\1\0\1\66"+
-    "\1\67\1\70\2\0\1\71";
+    "\4\0\1\51\5\0\1\52\3\0\1\53\1\54\1\55"+
+    "\5\0\1\56\4\0\1\57\1\0\1\60\1\61\7\0"+
+    "\1\62\2\0\1\63\1\64\1\0\1\65\1\0\1\66"+
+    "\1\0\1\67\1\70\1\71\2\0\1\72";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[163];
+    int [] result = new int[166];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -104,21 +104,21 @@ class Yylex {
     "\0\u0682\0\u06b3\0\u06e4\0\u0715\0\u0746\0\u0777\0\u07a8\0\61"+
     "\0\61\0\61\0\61\0\u07d9\0\u080a\0\u083b\0\u086c\0\u089d"+
     "\0\u08ce\0\u08ff\0\u0930\0\u0961\0\u0992\0\u09c3\0\u09f4\0\u0a25"+
-    "\0\u052b\0\61\0\u0a56\0\u0a87\0\u0ab8\0\u0ae9\0\61\0\u0b1a"+
-    "\0\u0b4b\0\u0b7c\0\61\0\u0bad\0\u0bde\0\61\0\u0c0f\0\u0c40"+
+    "\0\u0a56\0\u052b\0\61\0\u0a87\0\u0ab8\0\u0ae9\0\u0b1a\0\61"+
+    "\0\u0b4b\0\u0b7c\0\u0bad\0\61\0\u0bde\0\u0c0f\0\61\0\u0c40"+
     "\0\u0c71\0\u0ca2\0\u0cd3\0\u0d04\0\u0d35\0\u0d66\0\u0d97\0\u0dc8"+
-    "\0\u0df9\0\u0e2a\0\u0e5b\0\u0e8c\0\u0ebd\0\61\0\u0eee\0\61"+
-    "\0\61\0\u0f1f\0\u0f50\0\61\0\u0f81\0\61\0\u0fb2\0\u0fe3"+
-    "\0\u1014\0\u1045\0\u1076\0\u10a7\0\u10d8\0\u1109\0\u113a\0\61"+
-    "\0\u116b\0\u119c\0\u11cd\0\61\0\61\0\61\0\u11fe\0\u122f"+
-    "\0\u1260\0\u1291\0\u12c2\0\61\0\u12f3\0\u1324\0\u1355\0\u1386"+
-    "\0\61\0\u13b7\0\61\0\61\0\u13e8\0\u1419\0\u144a\0\u147b"+
-    "\0\u14ac\0\u14dd\0\u150e\0\61\0\u153f\0\u1570\0\61\0\61"+
-    "\0\u15a1\0\61\0\u15d2\0\61\0\u1603\0\61\0\61\0\61"+
-    "\0\u1634\0\u1665\0\61";
+    "\0\u0df9\0\u0e2a\0\u0e5b\0\u0e8c\0\u0ebd\0\u0eee\0\u0f1f\0\61"+
+    "\0\u0f50\0\61\0\61\0\u0f81\0\u0fb2\0\61\0\u0fe3\0\61"+
+    "\0\u1014\0\u1045\0\u1076\0\u10a7\0\61\0\u10d8\0\u1109\0\u113a"+
+    "\0\u116b\0\u119c\0\61\0\u11cd\0\u11fe\0\u122f\0\61\0\61"+
+    "\0\61\0\u1260\0\u1291\0\u12c2\0\u12f3\0\u1324\0\61\0\u1355"+
+    "\0\u1386\0\u13b7\0\u13e8\0\61\0\u1419\0\61\0\61\0\u144a"+
+    "\0\u147b\0\u14ac\0\u14dd\0\u150e\0\u153f\0\u1570\0\61\0\u15a1"+
+    "\0\u15d2\0\61\0\61\0\u1603\0\61\0\u1634\0\61\0\u1665"+
+    "\0\61\0\61\0\61\0\u1696\0\u16c7\0\61";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[163];
+    int [] result = new int[166];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -154,35 +154,36 @@ class Yylex {
     "\1\65\5\0\1\66\26\0\1\67\102\0\1\70\57\0"+
     "\1\71\1\72\60\0\1\73\62\0\1\74\31\0\1\75"+
     "\112\0\1\76\26\0\1\77\27\0\1\100\24\0\1\101"+
-    "\114\0\1\102\60\0\1\103\30\0\1\104\56\0\1\105"+
-    "\31\0\1\106\62\0\1\107\26\0\1\110\47\0\1\111"+
-    "\61\0\1\112\56\0\1\113\4\0\10\113\23\0\17\113"+
-    "\11\0\1\114\122\0\1\115\14\0\1\116\125\0\1\117"+
-    "\46\0\1\120\33\0\1\121\107\0\1\122\24\0\1\123"+
-    "\121\0\1\124\23\0\1\125\45\0\17\67\2\0\40\67"+
-    "\6\0\1\126\122\0\1\127\23\0\1\130\122\0\1\131"+
-    "\46\0\1\132\60\0\1\133\72\0\1\134\12\0\1\135"+
-    "\121\0\1\136\7\0\1\137\12\0\1\140\122\0\1\141"+
-    "\15\0\1\142\27\0\1\143\77\0\1\144\2\0\1\145"+
-    "\67\0\1\146\110\0\1\147\62\0\1\150\23\0\1\151"+
-    "\67\0\1\114\56\0\1\152\60\0\1\153\54\0\1\154"+
-    "\116\0\1\155\22\0\1\156\121\0\1\157\24\0\1\160"+
-    "\114\0\1\161\51\0\1\162\30\0\1\163\62\0\1\164"+
-    "\60\0\1\165\60\0\1\166\107\0\1\167\60\0\1\170"+
-    "\32\0\1\171\116\0\1\172\10\0\1\173\67\0\1\174"+
-    "\55\0\1\175\117\0\1\176\54\0\1\177\32\0\1\200"+
-    "\56\0\1\201\56\0\1\202\113\0\1\203\71\0\1\204"+
-    "\14\0\1\205\113\0\1\206\26\0\1\207\56\0\1\210"+
-    "\63\0\1\211\62\0\1\212\47\0\1\213\133\0\1\214"+
-    "\20\0\1\215\56\0\1\216\60\0\1\217\56\0\1\220"+
-    "\111\0\1\221\66\0\1\222\24\0\1\223\107\0\1\224"+
-    "\65\0\1\225\55\0\1\226\55\0\1\227\67\0\1\230"+
-    "\24\0\1\231\56\0\1\232\60\0\1\233\53\0\1\234"+
-    "\65\0\1\235\53\0\1\236\117\0\1\237\60\0\1\240"+
-    "\22\0\1\241\113\0\1\242\31\0\1\243\45\0";
+    "\114\0\1\102\30\0\1\103\27\0\1\104\30\0\1\105"+
+    "\56\0\1\106\31\0\1\107\62\0\1\110\26\0\1\111"+
+    "\47\0\1\112\61\0\1\113\56\0\1\114\4\0\10\114"+
+    "\23\0\17\114\11\0\1\115\122\0\1\116\14\0\1\117"+
+    "\125\0\1\120\46\0\1\121\33\0\1\122\107\0\1\123"+
+    "\24\0\1\124\121\0\1\125\23\0\1\126\45\0\17\67"+
+    "\2\0\40\67\6\0\1\127\122\0\1\130\23\0\1\131"+
+    "\122\0\1\132\46\0\1\133\60\0\1\134\72\0\1\135"+
+    "\44\0\1\136\26\0\1\137\121\0\1\140\7\0\1\141"+
+    "\12\0\1\142\122\0\1\143\15\0\1\144\27\0\1\145"+
+    "\77\0\1\146\2\0\1\147\67\0\1\150\110\0\1\151"+
+    "\62\0\1\152\23\0\1\153\67\0\1\115\56\0\1\154"+
+    "\60\0\1\155\54\0\1\156\116\0\1\157\22\0\1\160"+
+    "\121\0\1\161\24\0\1\162\114\0\1\163\51\0\1\164"+
+    "\61\0\1\165\27\0\1\166\62\0\1\167\60\0\1\170"+
+    "\60\0\1\171\107\0\1\172\60\0\1\173\32\0\1\174"+
+    "\116\0\1\175\10\0\1\176\67\0\1\177\55\0\1\200"+
+    "\117\0\1\201\54\0\1\202\32\0\1\203\56\0\1\204"+
+    "\56\0\1\205\113\0\1\206\71\0\1\207\14\0\1\210"+
+    "\113\0\1\211\26\0\1\212\56\0\1\213\63\0\1\214"+
+    "\62\0\1\215\47\0\1\216\133\0\1\217\20\0\1\220"+
+    "\56\0\1\221\60\0\1\222\56\0\1\223\111\0\1\224"+
+    "\66\0\1\225\24\0\1\226\107\0\1\227\65\0\1\230"+
+    "\55\0\1\231\55\0\1\232\67\0\1\233\24\0\1\234"+
+    "\56\0\1\235\60\0\1\236\53\0\1\237\65\0\1\240"+
+    "\53\0\1\241\117\0\1\242\60\0\1\243\22\0\1\244"+
+    "\113\0\1\245\31\0\1\246\45\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[5782];
+    int [] result = new int[5880];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -221,16 +222,16 @@ class Yylex {
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
     "\1\0\1\11\13\1\5\11\1\1\7\11\2\1\1\11"+
-    "\13\1\3\0\1\11\12\0\1\1\4\11\10\0\1\1"+
+    "\13\1\3\0\1\11\12\0\1\1\4\11\11\0\1\1"+
     "\1\0\1\1\1\0\2\1\1\11\4\0\1\11\3\0"+
-    "\1\11\2\0\1\11\17\0\1\11\1\0\2\11\2\0"+
-    "\1\11\1\0\1\11\11\0\1\11\3\0\3\11\5\0"+
-    "\1\11\4\0\1\11\1\0\2\11\7\0\1\11\2\0"+
-    "\2\11\1\0\1\11\1\0\1\11\1\0\3\11\2\0"+
-    "\1\11";
+    "\1\11\2\0\1\11\20\0\1\11\1\0\2\11\2\0"+
+    "\1\11\1\0\1\11\4\0\1\11\5\0\1\11\3\0"+
+    "\3\11\5\0\1\11\4\0\1\11\1\0\2\11\7\0"+
+    "\1\11\2\0\2\11\1\0\1\11\1\0\1\11\1\0"+
+    "\3\11\2\0\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[163];
+    int [] result = new int[166];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -647,231 +648,235 @@ class Yylex {
         case 1: 
           { 
           }
-        case 58: break;
+        case 59: break;
         case 2: 
           { echoFinding(yytext(), "ADADSABET", "-");
           }
-        case 59: break;
+        case 60: break;
         case 3: 
           { echoFinding(yytext(), "SINGLE_QUOTE_KW", "-");
           }
-        case 60: break;
+        case 61: break;
         case 4: 
           { echoFinding(yytext(), "DOT_KW", "-");
           }
-        case 61: break;
+        case 62: break;
         case 5: 
           { echoFinding(yytext(), "DIVIDE", "-");
           }
-        case 62: break;
+        case 63: break;
         case 6: 
           { echoFinding(yytext(), "PLUS", "-");
           }
-        case 63: break;
+        case 64: break;
         case 7: 
           { echoFinding(yytext(), "MINUS", "-");
           }
-        case 64: break;
+        case 65: break;
         case 8: 
           { echoFinding(yytext(), "MULTP", "-");
           }
-        case 65: break;
+        case 66: break;
         case 9: 
           { echoFinding(yytext(), "MOD", "-");
           }
-        case 66: break;
+        case 67: break;
         case 10: 
           { echoFinding(yytext(), "SEMICOLON_KW", "-");
           }
-        case 67: break;
+        case 68: break;
         case 11: 
           { echoFinding(yytext(), "COLON_KW", "-");
           }
-        case 68: break;
+        case 69: break;
         case 12: 
           { echoFinding(yytext(), "COMMA_KW", "-");
           }
-        case 69: break;
+        case 70: break;
         case 13: 
           { echoFinding(yytext(), "LP_KW", "-");
           }
-        case 70: break;
+        case 71: break;
         case 14: 
           { echoFinding(yytext(), "RP_KW", "-");
           }
-        case 71: break;
+        case 72: break;
         case 15: 
           { echoFinding(yytext(), "BLOCK_START", "-");
           }
-        case 72: break;
+        case 73: break;
         case 16: 
           { echoFinding(yytext(), "BLOCK_END", "-");
           }
-        case 73: break;
+        case 74: break;
         case 17: 
           { echoFinding(yytext(), "RANGE_START", "-");
           }
-        case 74: break;
+        case 75: break;
         case 18: 
           { echoFinding(yytext(), "RANGE_END", "-");
           }
-        case 75: break;
+        case 76: break;
         case 19: 
           { echoFinding(yytext(), "LT_KW", "-");
           }
-        case 76: break;
+        case 77: break;
         case 20: 
           { echoFinding(yytext(), "GT_KW", "-");
           }
-        case 77: break;
+        case 78: break;
         case 21: 
           { echoFinding(yytext(), "EQ_KW", "-");
           }
-        case 78: break;
+        case 79: break;
         case 22: 
           { echoFinding(yytext(), "TWO_DOTS_KW", "-");
           }
-        case 79: break;
+        case 80: break;
         case 23: 
           { echoFinding(yytext(), "COMMENTS", "-");
           }
-        case 80: break;
+        case 81: break;
         case 24: 
           { echoFinding(yytext(), "ASSIGN_KW", "-");
           }
-        case 81: break;
+        case 82: break;
         case 25: 
           { echoFinding(yytext(), "NEQ_KW", "-");
           }
-        case 82: break;
+        case 83: break;
         case 26: 
           { echoFinding(yytext(), "LTE_KW", "-");
           }
-        case 83: break;
+        case 84: break;
         case 27: 
           { echoFinding(yytext(), "GTE_KW", "-");
           }
-        case 84: break;
+        case 85: break;
         case 28: 
           { echoFinding(yytext(), "VA_KW", "-");
           }
-        case 85: break;
+        case 86: break;
         case 29: 
           { echoFinding(yytext(), "DO_KW", "-");
           }
-        case 86: break;
+        case 87: break;
         case 30: 
           { echoFinding(yytext(), "YA_KW", "-");
           }
-        case 87: break;
+        case 88: break;
         case 31: 
           { echoFinding(yytext(), "REALCONST", "-");
           }
-        case 88: break;
+        case 89: break;
         case 32: 
           { echoFinding(yytext(), "HARF", "-");
           }
-        case 89: break;
+        case 90: break;
         case 33: 
           { echoFinding(yytext(), "END_KW", "-");
           }
-        case 90: break;
+        case 91: break;
         case 34: 
           { echoFinding(yytext(), "FOR_KW", "-");
           }
-        case 91: break;
+        case 92: break;
         case 35: 
           { echoFinding(yytext(), "INT_KW", "-");
           }
-        case 92: break;
+        case 93: break;
         case 36: 
           { echoFinding(yytext(), "BOOLSABET", "-");
           }
-        case 93: break;
+        case 94: break;
         case 37: 
           { echoFinding(yytext(), "UPTO_KW", "-");
           }
-        case 94: break;
+        case 95: break;
         case 38: 
           { echoFinding(yytext(), "EXIT_KW", "-");
           }
-        case 95: break;
+        case 96: break;
         case 39: 
           { echoFinding(yytext(), "AGAR_KW", "-");
           }
-        case 96: break;
+        case 97: break;
         case 40: 
           { echoFinding(yytext(), "CHAR_KW", "-");
           }
-        case 97: break;
-        case 41: 
-          { echoFinding(yytext(), "WHEN_KW", "-");
-          }
         case 98: break;
-        case 42: 
-          { echoFinding(yytext(), "RAVIE_KW", "-");
+        case 41: 
+          { echoFinding(yytext(), "MAIN_KW", "-");
           }
         case 99: break;
-        case 43: 
-          { echoFinding(yytext(), "FLOAT_KW", "-");
+        case 42: 
+          { echoFinding(yytext(), "WHEN_KW", "-");
           }
         case 100: break;
-        case 44: 
-          { echoFinding(yytext(), "ANGAH_KW", "-");
+        case 43: 
+          { echoFinding(yytext(), "RAVIE_KW", "-");
           }
         case 101: break;
-        case 45: 
-          { echoFinding(yytext(), "MORED_KW", "-");
+        case 44: 
+          { echoFinding(yytext(), "FLOAT_KW", "-");
           }
         case 102: break;
-        case 46: 
-          { echoFinding(yytext(), "WHILE_KW", "-");
+        case 45: 
+          { echoFinding(yytext(), "ANGAH_KW", "-");
           }
         case 103: break;
-        case 47: 
-          { echoFinding(yytext(), "SHENASE", ""+insertSymbol(yytext(), "SHENASE"));
+        case 46: 
+          { echoFinding(yytext(), "MORED_KW", "-");
           }
         case 104: break;
-        case 48: 
-          { echoFinding(yytext(), "NAGHIZ_KW", "-");
+        case 47: 
+          { echoFinding(yytext(), "WHILE_KW", "-");
           }
         case 105: break;
-        case 49: 
-          { echoFinding(yytext(), "DOWNTO_KW", "-");
+        case 48: 
+          { echoFinding(yytext(), "SHENASE", ""+insertSymbol(yytext(), "SHENASE"));
           }
         case 106: break;
-        case 50: 
-          { echoFinding(yytext(), "BOOLEAN_KW", "-");
+        case 49: 
+          { echoFinding(yytext(), "NAGHIZ_KW", "-");
           }
         case 107: break;
-        case 51: 
-          { echoFinding(yytext(), "PROGRAM_KW", "-");
+        case 50: 
+          { echoFinding(yytext(), "DOWNTO_KW", "-");
           }
         case 108: break;
-        case 52: 
-          { echoFinding(yytext(), "VAGARNA_KW", "-");
+        case 51: 
+          { echoFinding(yytext(), "BOOLEAN_KW", "-");
           }
         case 109: break;
-        case 53: 
-          { echoFinding(yytext(), "DEFAULT_KW", "-");
+        case 52: 
+          { echoFinding(yytext(), "PROGRAM_KW", "-");
           }
         case 110: break;
-        case 54: 
-          { echoFinding(yytext(), "BAZGASHT_KW", "-");
+        case 53: 
+          { echoFinding(yytext(), "VAGARNA_KW", "-");
           }
         case 111: break;
-        case 55: 
-          { echoFinding(yytext(), "GOZINESH_KW", "-");
+        case 54: 
+          { echoFinding(yytext(), "DEFAULT_KW", "-");
           }
         case 112: break;
-        case 56: 
-          { echoFinding(yytext(), "VAANGAH_KW", "-");
+        case 55: 
+          { echoFinding(yytext(), "BAZGASHT_KW", "-");
           }
         case 113: break;
-        case 57: 
-          { echoFinding(yytext(), "YAVAGARNA_KW", "-");
+        case 56: 
+          { echoFinding(yytext(), "GOZINESH_KW", "-");
           }
         case 114: break;
+        case 57: 
+          { echoFinding(yytext(), "VAANGAH_KW", "-");
+          }
+        case 115: break;
+        case 58: 
+          { echoFinding(yytext(), "YAVAGARNA_KW", "-");
+          }
+        case 116: break;
         default: 
           if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
             zzAtEOF = true;

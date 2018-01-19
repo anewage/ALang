@@ -11,13 +11,10 @@
 %token ADADSABET
 %token REALCONST
 %token BOOLSABET
-%token COMMENTS
 %token SEMICOLON_KW
 %token COLON_KW
 %token COMMA_KW
-%token SINGLE_QUOTE_KW
 %token TWO_DOTS_KW
-%token DOT_KW
 %token LP_KW
 %token RP_KW
 %token PLUS
@@ -63,7 +60,6 @@
 %token RAVIE_KW
 %token NAGHIZ_KW
 %token BAZGASHT_KW
-%token WHITESPACE
 
 %left YA_KW YAVAGARNA_KW
 %left VA_KW VAANGAH_KW
@@ -71,6 +67,10 @@
 %left PLUS MINUS
 %left MULTP DIVIDE MOD
 %right NAGHIZ_KW
+
+/* In order to solve the dangling else problem */
+%nonassoc ANGAH_KW
+%nonassoc VAGARNA_KW
 
 %%
 program:
@@ -247,85 +247,83 @@ statement_list:
             "statement_list: statement_list SEMICOLON_KW");
     };
 
-other_statements:
-    SHENASE ASSIGN_KW ebarat {
+statement:
+    AGAR_KW ebarat_bool ANGAH_KW {
         System.out.println("Rule 37: " +
+            "statement: AGAR_KW ebarat_bool ANGAH_KW");
+    }
+    | AGAR_KW ebarat_bool ANGAH_KW statement {
+        System.out.println("Rule 38: " +
+            "statement: AGAR_KW ebarat_bool ANGAH_KW statement");
+    }
+    | AGAR_KW ebarat_bool ANGAH_KW VAGARNA_KW statement {
+        System.out.println("Rule 39: " +
+            "statement: AGAR_KW ebarat_bool ANGAH_KW VAGARNA_KW statement");
+    }
+    | AGAR_KW ebarat_bool ANGAH_KW statement VAGARNA_KW statement {
+        System.out.println("Rule 40: " +
+            "statement: AGAR_KW ebarat_bool ANGAH_KW statement VAGARNA_KW statement");
+    }
+    | SHENASE ASSIGN_KW ebarat {
+        System.out.println("Rule 41: " +
             "statement: SHENASE ASSIGN_KW ebarat");
     }
     | DO_KW statement WHILE_KW ebarat_bool {
-		System.out.println("Rule 40: " +
+		System.out.println("Rule 42: " +
 			"statement: DO_KW statement WHILE_KW ebarat_bool");
 	}
-	| DO_KW WHILE_KW ebarat_bool {}
+	| DO_KW WHILE_KW ebarat_bool {
+        System.out.println("Rule 43: " +
+			"statement: DO_KW WHILE_KW ebarat_bool");
+	}
 	| FOR_KW SHENASE ASSIGN_KW counter DO_KW statement {
-		System.out.println("Rule 41: " +
+		System.out.println("Rule 44: " +
 			"statement: FOR_KW SHENASE ASSIGN_KW counter DO_KW statement");
 	}
-	| FOR_KW SHENASE ASSIGN_KW counter DO_KW {}
+	| FOR_KW SHENASE ASSIGN_KW counter DO_KW {
+		System.out.println("Rule 45: " +
+			"statement: FOR_KW SHENASE ASSIGN_KW counter DO_KW");
+	}
 	| GOZINESH_KW ebarat onsor_mored default END_KW {
-		System.out.println("Rule 42: " +
+		System.out.println("Rule 46: " +
 			"statement: GOZINESH_KW ebarat onsor_mored default END_KW");
 	}
     | GOZINESH_KW ebarat onsor_mored END_KW {
-		System.out.println("Rule 43: " +
+		System.out.println("Rule 47: " +
 			"statement: GOZINESH_KW ebarat onsor_mored END_KW");
 	}
 	| SHENASE LP_KW arguments_list RP_KW {
-		System.out.println("Rule 44: " +
+		System.out.println("Rule 48: " +
 			"statement: SHENASE LP_KW arguments_list RP_KW");
 	}
 	| SHENASE LP_KW RP_KW {
-		System.out.println("Rule 45: " +
+		System.out.println("Rule 49: " +
 			"statement: SHENASE LP_KW RP_KW");
 	}
 	| SHENASE RANGE_START ebarat RANGE_END ASSIGN_KW ebarat {
-        System.out.println("Rule 46: " +
+        System.out.println("Rule 50: " +
             "statement: SHENASE RANGE_START ebarat RANGE_END ASSIGN_KW ebarat");
     }
 	| BAZGASHT_KW ebarat {
-		System.out.println("Rule 49: " +
+		System.out.println("Rule 51: " +
 			"statement: BAZGASHT_KW ebarat");
 	}
 	| EXIT_KW WHEN_KW ebarat_bool {
-		System.out.println("Rule 50: " +
+		System.out.println("Rule 52: " +
 			"statement: EXIT_KW WHEN_KW ebarat_bool");
 	}
 	| block {
-		System.out.println("Rule 51: " +
+		System.out.println("Rule 53: " +
 			"statement: block");
 	};
 
-matched:
-    AGAR_KW ebarat_bool ANGAH_KW matched VAGARNA_KW matched {
-        System.out.println("Rule 37: " +
-            "statement: SHENASE ASSIGN_KW ebarat");
-    }
-    | AGAR_KW ebarat_bool ANGAH_KW VAGARNA_KW matched {}
-    | AGAR_KW ebarat_bool ANGAH_KW matched VAGARNA_KW {}
-    | AGAR_KW ebarat_bool ANGAH_KW VAGARNA_KW {}
-    | other_statements {};
-
-unmatched:
-    AGAR_KW ebarat_bool ANGAH_KW statement {}
-    | AGAR_KW ebarat_bool ANGAH_KW matched VAGARNA_KW unmatched {}
-
-statement:
-	unmatched {
-	    System.out.println("Rule 40: " +
-            "statement: unmatched");
-	}
-	| matched {
-	    System.out.println("Rule 40: " +
-            "statement: matched");
-	}
-
 arguments_list:
 	arguments_list COMMA_KW ebarat {
-		System.out.println("Rule 52: " +
+		System.out.println("Rule 54: " +
 			"arguments_list: multi_arguments");
 	}
 	| ebarat {
-        System.out.println("Rule 53: " +
+        System.out.println("Rule 55: " +
             "arguments_list: ebarat");
     };
 
