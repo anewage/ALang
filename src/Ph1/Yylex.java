@@ -4,6 +4,7 @@
     CODE SECTION
 */
 package Ph1;
+import java.io.*;
 
 
 /**
@@ -304,12 +305,12 @@ class Yylex {
   private int zzFinalHighSurrogate = 0;
 
   /* user code: */
-    public static void echoFinding(String text, String desc) throws java.io.IOException{
-        java.io.FileWriter fw1 = new java.io.FileWriter("./src/Ph1/output.txt", true);
-        java.io.FileWriter fw2 = new java.io.FileWriter("./src/lexemes.txt", true);
-        java.io.BufferedWriter bw1 = new java.io.BufferedWriter(fw1);
-        java.io.BufferedWriter bw2 = new java.io.BufferedWriter(fw2);
-        String msg = text + "\t\t" + desc + "\t\t-";
+    public static void echoFinding(String lexeme, String token, String attribute) throws IOException{
+        FileWriter fw1 = new FileWriter("./src/Ph1/output.al", true);
+        FileWriter fw2 = new FileWriter("./src/lexemes.al", true);
+        BufferedWriter bw1 = new BufferedWriter(fw1);
+        BufferedWriter bw2 = new BufferedWriter(fw2);
+        String msg = lexeme + "\t\t" + token + "\t\t" + attribute;
         System.out.println(msg);
         bw1.write("\n"+msg);
         bw2.write("\n"+msg);
@@ -631,227 +632,227 @@ class Yylex {
           }
         case 58: break;
         case 2: 
-          { echoFinding(yytext(), "ADADSABET");
+          { echoFinding(yytext(), "ADADSABET", "-");
           }
         case 59: break;
         case 3: 
-          { echoFinding(yytext(), "SINGLE_QUOTE_KW");
+          { echoFinding(yytext(), "SINGLE_QUOTE_KW", "-");
           }
         case 60: break;
         case 4: 
-          { echoFinding(yytext(), "DOT_KW");
+          { echoFinding(yytext(), "DOT_KW", "-");
           }
         case 61: break;
         case 5: 
-          { echoFinding(yytext(), "DIVIDE");
+          { echoFinding(yytext(), "DIVIDE", "-");
           }
         case 62: break;
         case 6: 
-          { echoFinding(yytext(), "PLUS");
+          { echoFinding(yytext(), "PLUS", "-");
           }
         case 63: break;
         case 7: 
-          { echoFinding(yytext(), "MINUS");
+          { echoFinding(yytext(), "MINUS", "-");
           }
         case 64: break;
         case 8: 
-          { echoFinding(yytext(), "MULTP");
+          { echoFinding(yytext(), "MULTP", "-");
           }
         case 65: break;
         case 9: 
-          { echoFinding(yytext(), "MOD");
+          { echoFinding(yytext(), "MOD", "-");
           }
         case 66: break;
         case 10: 
-          { echoFinding(yytext(), "SEMICOLON_KW");
+          { echoFinding(yytext(), "SEMICOLON_KW", "-");
           }
         case 67: break;
         case 11: 
-          { echoFinding(yytext(), "COLON_KW");
+          { echoFinding(yytext(), "COLON_KW", "-");
           }
         case 68: break;
         case 12: 
-          { echoFinding(yytext(), "COMMA_KW");
+          { echoFinding(yytext(), "COMMA_KW", "-");
           }
         case 69: break;
         case 13: 
-          { echoFinding(yytext(), "LP_KW");
+          { echoFinding(yytext(), "LP_KW", "-");
           }
         case 70: break;
         case 14: 
-          { echoFinding(yytext(), "RP_KW");
+          { echoFinding(yytext(), "RP_KW", "-");
           }
         case 71: break;
         case 15: 
-          { echoFinding(yytext(), "BLOCK_START");
+          { echoFinding(yytext(), "BLOCK_START", "-");
           }
         case 72: break;
         case 16: 
-          { echoFinding(yytext(), "BLOCK_END");
+          { echoFinding(yytext(), "BLOCK_END", "-");
           }
         case 73: break;
         case 17: 
-          { echoFinding(yytext(), "RANGE_START");
+          { echoFinding(yytext(), "RANGE_START", "-");
           }
         case 74: break;
         case 18: 
-          { echoFinding(yytext(), "RANGE_END");
+          { echoFinding(yytext(), "RANGE_END", "-");
           }
         case 75: break;
         case 19: 
-          { echoFinding(yytext(), "LT_KW");
+          { echoFinding(yytext(), "LT_KW", "-");
           }
         case 76: break;
         case 20: 
-          { echoFinding(yytext(), "GT_KW");
+          { echoFinding(yytext(), "GT_KW", "-");
           }
         case 77: break;
         case 21: 
-          { echoFinding(yytext(), "EQ_KW");
+          { echoFinding(yytext(), "EQ_KW", "-");
           }
         case 78: break;
         case 22: 
-          { echoFinding(yytext(), "TWO_DOTS_KW");
+          { echoFinding(yytext(), "TWO_DOTS_KW", "-");
           }
         case 79: break;
         case 23: 
-          { echoFinding(yytext(), "COMMENTS");
+          { echoFinding(yytext(), "COMMENTS", "-");
           }
         case 80: break;
         case 24: 
-          { echoFinding(yytext(), "ASSIGN_KW");
+          { echoFinding(yytext(), "ASSIGN_KW", "-");
           }
         case 81: break;
         case 25: 
-          { echoFinding(yytext(), "NEQ_KW");
+          { echoFinding(yytext(), "NEQ_KW", "-");
           }
         case 82: break;
         case 26: 
-          { echoFinding(yytext(), "LTE_KW");
+          { echoFinding(yytext(), "LTE_KW", "-");
           }
         case 83: break;
         case 27: 
-          { echoFinding(yytext(), "GTE_KW");
+          { echoFinding(yytext(), "GTE_KW", "-");
           }
         case 84: break;
         case 28: 
-          { echoFinding(yytext(), "VA_KW");
+          { echoFinding(yytext(), "VA_KW", "-");
           }
         case 85: break;
         case 29: 
-          { echoFinding(yytext(), "DO_KW");
+          { echoFinding(yytext(), "DO_KW", "-");
           }
         case 86: break;
         case 30: 
-          { echoFinding(yytext(), "YA_KW");
+          { echoFinding(yytext(), "YA_KW", "-");
           }
         case 87: break;
         case 31: 
-          { echoFinding(yytext(), "REALCONST");
+          { echoFinding(yytext(), "REALCONST", "-");
           }
         case 88: break;
         case 32: 
-          { echoFinding(yytext(), "HARF");
+          { echoFinding(yytext(), "HARF", "-");
           }
         case 89: break;
         case 33: 
-          { echoFinding(yytext(), "END_KW");
+          { echoFinding(yytext(), "END_KW", "-");
           }
         case 90: break;
         case 34: 
-          { echoFinding(yytext(), "FOR_KW");
+          { echoFinding(yytext(), "FOR_KW", "-");
           }
         case 91: break;
         case 35: 
-          { echoFinding(yytext(), "INT_KW");
+          { echoFinding(yytext(), "INT_KW", "-");
           }
         case 92: break;
         case 36: 
-          { echoFinding(yytext(), "BOOLSABET");
+          { echoFinding(yytext(), "BOOLSABET", "-");
           }
         case 93: break;
         case 37: 
-          { echoFinding(yytext(), "UPTO_KW");
+          { echoFinding(yytext(), "UPTO_KW", "-");
           }
         case 94: break;
         case 38: 
-          { echoFinding(yytext(), "EXIT_KW");
+          { echoFinding(yytext(), "EXIT_KW", "-");
           }
         case 95: break;
         case 39: 
-          { echoFinding(yytext(), "AGAR_KW");
+          { echoFinding(yytext(), "AGAR_KW", "-");
           }
         case 96: break;
         case 40: 
-          { echoFinding(yytext(), "CHAR_KW");
+          { echoFinding(yytext(), "CHAR_KW", "-");
           }
         case 97: break;
         case 41: 
-          { echoFinding(yytext(), "WHEN_KW");
+          { echoFinding(yytext(), "WHEN_KW", "-");
           }
         case 98: break;
         case 42: 
-          { echoFinding(yytext(), "RAVIE_KW");
+          { echoFinding(yytext(), "RAVIE_KW", "-");
           }
         case 99: break;
         case 43: 
-          { echoFinding(yytext(), "FLOAT_KW");
+          { echoFinding(yytext(), "FLOAT_KW", "-");
           }
         case 100: break;
         case 44: 
-          { echoFinding(yytext(), "ANGAH_KW");
+          { echoFinding(yytext(), "ANGAH_KW", "-");
           }
         case 101: break;
         case 45: 
-          { echoFinding(yytext(), "MORED_KW");
+          { echoFinding(yytext(), "MORED_KW", "-");
           }
         case 102: break;
         case 46: 
-          { echoFinding(yytext(), "WHILE_KW");
+          { echoFinding(yytext(), "WHILE_KW", "-");
           }
         case 103: break;
         case 47: 
-          { echoFinding(yytext(), "SHENASE");
+          { echoFinding(yytext(), "SHENASE", "-");
           }
         case 104: break;
         case 48: 
-          { echoFinding(yytext(), "NAGHIZ_KW");
+          { echoFinding(yytext(), "NAGHIZ_KW", "-");
           }
         case 105: break;
         case 49: 
-          { echoFinding(yytext(), "DOWNTO_KW");
+          { echoFinding(yytext(), "DOWNTO_KW", "-");
           }
         case 106: break;
         case 50: 
-          { echoFinding(yytext(), "BOOLEAN_KW");
+          { echoFinding(yytext(), "BOOLEAN_KW", "-");
           }
         case 107: break;
         case 51: 
-          { echoFinding(yytext(), "PROGRAM_KW");
+          { echoFinding(yytext(), "PROGRAM_KW", "-");
           }
         case 108: break;
         case 52: 
-          { echoFinding(yytext(), "VAGARNA_KW");
+          { echoFinding(yytext(), "VAGARNA_KW", "-");
           }
         case 109: break;
         case 53: 
-          { echoFinding(yytext(), "DEFAULT_KW");
+          { echoFinding(yytext(), "DEFAULT_KW", "-");
           }
         case 110: break;
         case 54: 
-          { echoFinding(yytext(), "BAZGASHT_KW");
+          { echoFinding(yytext(), "BAZGASHT_KW", "-");
           }
         case 111: break;
         case 55: 
-          { echoFinding(yytext(), "GOZINESH_KW");
+          { echoFinding(yytext(), "GOZINESH_KW", "-");
           }
         case 112: break;
         case 56: 
-          { echoFinding(yytext(), "VAANGAH_KW");
+          { echoFinding(yytext(), "VAANGAH_KW", "-");
           }
         case 113: break;
         case 57: 
-          { echoFinding(yytext(), "YAVAGARNA_KW");
+          { echoFinding(yytext(), "YAVAGARNA_KW", "-");
           }
         case 114: break;
         default: 

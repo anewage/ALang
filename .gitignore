@@ -1,6 +1,6 @@
 .idea/
 ALang.iml
 out/
-src/Ph1/output.txt
-src/lexemes.txt
+src/Ph1/output.al
+src/lexemes.al
 src/Ph1/Yylex.java~

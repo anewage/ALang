@@ -2,7 +2,69 @@
   package Ph2;
 %}
 
-%token PROGRAM_KW MAIN_KW PROCEDURE_KW INTEGER_KW REAL_KW CHAR_KW BOOLEAN_KW IF_KW THEN_KW ELSE_KW DO_KW WHILE_KW FOR_KW IN_KW REPEAT_KW SWITCH_KW CASE_KW DEFAULT_KW END_KW RETURN_KW EXIT_KW WHEN_KW AND_KW AND_THEN_KW OR_KW OR_ELSE_KW NOT_KW SEMICOLON_KW COLON_KW COMMA_KW SINGLE_QUOTE_KW ASS_KW LP_KW RP_KW LB_KW RB_KW LCB_KW RCB_KW TWO_DOTS_KW DOT_KW EQ_KW NE_KW LE_KW LT_KW GE_KW GT_KW ADD_KW SUB_KW MUL_KW DIV_KW MOD_KW BOOLEAN_CONSTANT CHAR_CONSTANT REAL_CONSTANT INTEGER_CONSTANT IDENTIFIER
+/* The Start Symbol of the Grammar */
+%start program
+
+/* The tokens */
+%token SHENASE
+%token HARF
+%token ADADSABET
+%token REALCONST
+%token BOOLSABET
+%token COMMENTS
+%token SEMICOLON_KW
+%token COLON_KW
+%token COMMA_KW
+%token SINGLE_QUOTE_KW
+%token TWO_DOTS_KW
+%token DOT_KW
+%token LP_KW
+%token RP_KW
+%token COMMA_KW
+%token PLUS
+%token MINUS
+%token MULTP
+%token DIVIDE
+%token MOD
+%token BLOCK_START
+%token BLOCK_END
+%token RANGE_START
+%token RANGE_END
+%token NEQ_KW
+%token GT_KW
+%token GTE_KW
+%token LT_KW
+%token LTE_KW
+%token EQ_KW
+%token ASSIGN_KW
+%token INT_KW
+%token FLOAT_KW
+%token CHAR_KW
+%token BOOLEAN_KW
+%token PROGRAM_KW
+%token AGAR_KW
+%token ANGAH_KW
+%token VAGARNA_KW
+%token DO_KW
+%token WHILE_KW
+%token FOR_KW
+%token GOZINESH_KW
+%token MORED_KW
+%token END_KW
+%token EXIT_KW
+%token WHEN_KW
+%token DEFAULT_KW
+%token UPTO_KW
+%token DOWNTO_KW
+%token VA_KW
+%token YA_KW
+%token VAANGAH_KW
+%token YAVAGARNA_KW
+%token RAVIE_KW
+%token NAGHIZ_KW
+%token BAZGASHT_KW
+%token COMMENTS
+%token WHITESPACE
 
 %code {
     static PrintStream writer;
