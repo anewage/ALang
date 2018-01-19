@@ -35,8 +35,25 @@ public class Main {
 
     public void parse() throws IOException {
         System.out.println("Initiating the parser...");
-        Yylex lexr = lexer;
-        parser = new YYParser((YYParser.Lexer) lexer);
+        FileReader r = new FileReader("./src/Resources/input.al");
+        this.lexer = new Yylex(r);
+        YYParser.Lexer lex = new YYParser.Lexer() {
+            @Override
+            public Object getLVal() {
+                return null;
+            }
+
+            @Override
+            public int yylex() throws IOException {
+                return lexer.yylex();
+            }
+
+            @Override
+            public void yyerror(String s) {
+
+            }
+        };
+        parser = new YYParser(lex);
         parser.parse();
     }
 
@@ -44,7 +61,7 @@ public class Main {
         // initialization
         Main m = new Main();
         try {
-            m.lex();
+//            m.lex();
             m.parse();
         } catch (IOException e) {
             e.printStackTrace();
