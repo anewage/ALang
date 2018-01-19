@@ -3,10 +3,12 @@
 */
 package Ph1;
 import java.io.*;
+import java.util.Hashtable;
 
 %%
 
 %{
+    /* Phase 1 */
     public void echoFinding(String lexeme, String token, String attribute) throws IOException{
         FileWriter fw1 = new FileWriter("./src/Ph1/output.al", true);
         FileWriter fw2 = new FileWriter("./src/lexemes.al", true);
@@ -18,6 +20,21 @@ import java.io.*;
         bw2.write("\n"+msg);
         bw1.close();
         bw2.close();
+    }
+
+    /* Phase 2 */
+    private Hashtable<String, String> symbolTable = new Hashtable<String, String>();
+
+    public int insertSymbol(String lexeme, String token) {
+        if (!isInSymbolTable(lexeme)){
+            symbolTable.put(lexeme, token);
+            return 0;
+        }
+        return -1;
+    }
+
+    public boolean isInSymbolTable(String lexeme){
+        return symbolTable.containsKey(lexeme);
     }
 %}
 
@@ -94,7 +111,7 @@ BAZGASHT_KW = (bazgasht)
     RULES
 */
 
-{SHENASE} {echoFinding(yytext(), "SHENASE", "-");}
+{SHENASE} {echoFinding(yytext(), "SHENASE", insertSymbol(yytext(), "SHENASE"));}
 {HARF} {echoFinding(yytext(), "HARF", "-");}
 {ADADSABET} {echoFinding(yytext(), "ADADSABET", "-");}
 {REALCONST} {echoFinding(yytext(), "REALCONST", "-");}

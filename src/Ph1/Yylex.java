@@ -305,7 +305,7 @@ class Yylex {
   private int zzFinalHighSurrogate = 0;
 
   /* user code: */
-    public static void echoFinding(String lexeme, String token, String attribute) throws IOException{
+    public void echoFinding(String lexeme, String token, String attribute) throws IOException{
         FileWriter fw1 = new FileWriter("./src/Ph1/output.al", true);
         FileWriter fw2 = new FileWriter("./src/lexemes.al", true);
         BufferedWriter bw1 = new BufferedWriter(fw1);
