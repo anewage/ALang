@@ -35,16 +35,24 @@ BOOLSABET = "true"|"false"
 
 WHITESPACE = [ \n\r\t]
 COMMENTS = "//".*
-PUNCT = [(),;:]
 PLUS = [+]
 MINUS = [-]
 MULTP = [*]
 DIVIDE = [/]
 MOD = [%]
+SEMICOLON_KW = [;]
+COLON_KW = [:]
+COMMA_KW = [,]
+SINGLE_QUOTE_KW = "\u0027"
+TWO_DOTS_KW = "\.\."
+DOT_KW = "\."
+LP_KW = [(]
+RP_KW = [)]
 BLOCK_START = (\{)
 BLOCK_END = (\})
 RANGE_START = (\[)
 RANGE_END = (\])
+COMMA_KW = (,)
 NEQ_KW = (<>)
 GT_KW = (>)
 GTE_KW = (>=)
@@ -91,7 +99,15 @@ BAZGASHT_KW = (bazgasht)
 {REALCONST} {echoFinding(yytext(), "REALCONST");}
 {BOOLSABET} {echoFinding(yytext(), "BOOLSABET");}
 {COMMENTS} {echoFinding(yytext(), "COMMENTS");}
-{PUNCT} {echoFinding(yytext(), "PUNCT");}
+{SEMICOLON_KW} {echoFinding(yytext(), "SEMICOLON_KW");}
+{COLON_KW} {echoFinding(yytext(), "COLON_KW");}
+{COMMA_KW} {echoFinding(yytext(), "COMMA_KW");}
+{SINGLE_QUOTE_KW} {echoFinding(yytext(), "SINGLE_QUOTE_KW");}
+{TWO_DOTS_KW} {echoFinding(yytext(), "TWO_DOTS_KW");}
+{DOT_KW} {echoFinding(yytext(), "DOT_KW");}
+{LP_KW} {echoFinding(yytext(), "LP_KW");}
+{RP_KW} {echoFinding(yytext(), "RP_KW");}
+{COMMA_KW} {echoFinding(yytext(), "COMMA_KW");}
 {PLUS} {echoFinding(yytext(), "PLUS");}
 {MINUS} {echoFinding(yytext(), "MINUS");}
 {MULTP} {echoFinding(yytext(), "MULTP");}
