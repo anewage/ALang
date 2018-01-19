@@ -100,13 +100,12 @@ declarations_list:
         System.out.println("Rule 6: " +
             "declarations_list: declarations");
     }
-    ;
 
 declarations:
 	taeen_type declarator_list SEMICOLON_KW{
 		System.out.println("Rule 7: " +
 			"declarations: taeen_type declarator_list SEMICOLON_KW");
-	};
+	}
 
 taeen_type:
 	INT_KW{
@@ -124,7 +123,7 @@ taeen_type:
 	| BOOLEAN_KW{
 		System.out.println("Rule 11: " +
 			"taeen_type: BOOLEAN_KW");
-	};
+	}
 
 declarator_list:
     declarator{
@@ -134,7 +133,7 @@ declarator_list:
 	| declarator_list COMMA_KW declarator{
 		System.out.println("Rule 13: " +
 			"declarator_list: declarator_list COMMA_KW declarator");
-	};
+	}
 
 declarator:
 	dec{
@@ -144,7 +143,7 @@ declarator:
 	| dec ASSIGN_KW meghdar_avalie{
 		System.out.println("Rule 15: " +
 			"declarator: dec ASSIGN_KW meghdar_avalie");
-	};
+	}
 
 dec:
 	SHENASE{
@@ -158,7 +157,7 @@ dec:
 	| SHENASE RANGE_START ADADSABET RANGE_END{
 		System.out.println("Rule 18: " +
 			"dec: SHENASE RANGE_START ADADSABET RANGE_END");
-	};
+	}
 
 range:
 	SHENASE TWO_DOTS_KW SHENASE{
@@ -172,7 +171,7 @@ range:
 	| ebarat_riazi TWO_DOTS_KW ebarat_riazi{
 		System.out.println("Rule 21: " +
 			"range: ebarat_riazi TWO_DOTS_KW ebarat_riazi");
-	};
+	}
 
 meghdar_avalie:
     ebarat_sabet{
@@ -182,7 +181,7 @@ meghdar_avalie:
 	| BLOCK_START list_meghdar_avalie BLOCK_END{
 		System.out.println("Rule 23: " +
 			"meghdar_avalie: BLOCK_START list_meghdar_avalie BLOCK_END");
-	};
+	}
 
 list_meghdar_avalie:
 	ebarat_sabet COMMA_KW list_meghdar_avalie{
@@ -192,13 +191,13 @@ list_meghdar_avalie:
 	| ebarat_sabet{
 		System.out.println("Rule 25: " +
 			"list_meghdar_avalie: ebarat_sabet");
-	};
+	}
 
 list_ravie:
     ravie {
         System.out.println("Rule 26: " +
             "list_ravie: ravie ");
-    };
+    }
 	| list_ravie ravie {
 		System.out.println("Rule 27: " +
 			"list_ravie: list_ravie ravie ");
@@ -218,7 +217,7 @@ parameters:
     LP_KW RP_KW {
         System.out.println("Rule 30: " +
             "parameters: LP_KW RP_KW");
-    };
+    }
 	| LP_KW declarations_list RP_KW {
 		System.out.println("Rule 31: " +
 			"parameters: LP_KW declarations_list RP_KW");
@@ -478,12 +477,12 @@ ebarat_bool:
     | ebarat NAGHIZ_KW {
         System.out.println("Rule 90: " +
             "ebarat_bool: ebarat NAGHIZ_KW ");
-    };
+    }
 
 zojmoratab:
     LP_KW ebarat COMMA_KW ebarat RP_KW{
         System.out.println("Rule 91: " +
             "zojmoratab: RP_KW ebarat COMMA_KW ebarat LP_KW");
-    };
+    }
 
 
