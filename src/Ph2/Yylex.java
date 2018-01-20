@@ -57,17 +57,17 @@ class Yylex {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\1\3\1\1\1\4\6\1\1\5"+
-    "\1\6\1\7\1\10\1\11\1\12\1\13\1\14\1\15"+
-    "\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25"+
-    "\13\1\3\0\1\26\12\0\1\27\1\30\1\31\1\32"+
-    "\1\33\11\0\1\34\1\0\1\35\1\0\1\36\1\37"+
-    "\1\40\4\0\1\41\3\0\1\42\2\0\1\43\20\0"+
-    "\1\44\1\0\1\45\1\46\2\0\1\47\1\0\1\50"+
-    "\4\0\1\51\5\0\1\52\3\0\1\53\1\54\1\55"+
-    "\5\0\1\56\4\0\1\57\1\0\1\60\1\61\7\0"+
-    "\1\62\2\0\1\63\1\64\1\0\1\65\1\0\1\66"+
-    "\1\0\1\67\1\70\1\71\2\0\1\72";
+    "\1\0\1\1\1\2\1\3\10\1\1\4\1\5\1\6"+
+    "\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16"+
+    "\1\17\1\20\1\21\1\22\1\23\1\24\13\1\3\0"+
+    "\1\25\12\0\1\26\1\27\1\30\1\31\1\32\11\0"+
+    "\1\33\1\0\1\34\1\0\1\35\1\36\1\37\4\0"+
+    "\1\40\3\0\1\41\2\0\1\42\20\0\1\43\1\0"+
+    "\1\44\1\45\2\0\1\46\1\0\1\47\4\0\1\50"+
+    "\5\0\1\51\3\0\1\52\1\53\1\54\5\0\1\55"+
+    "\4\0\1\56\1\0\1\57\1\60\7\0\1\61\2\0"+
+    "\1\62\1\63\1\0\1\64\1\0\1\65\1\0\1\66"+
+    "\1\67\1\70\2\0\1\71";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[166];
@@ -314,7 +314,7 @@ class Yylex {
         BufferedWriter bw1 = new BufferedWriter(fw1);
         BufferedWriter bw2 = new BufferedWriter(fw2);
         String msg = lexeme + "\t\t" + token + "\t\t" + attribute;
-        System.out.println(msg);
+        //System.out.println(msg);
         bw1.write("\n"+msg);
         bw2.write("\n"+msg);
         bw1.close();
@@ -566,7 +566,7 @@ class Yylex {
    * @return      the next token
    * @exception   java.io.IOException  if any I/O-Error occurs
    */
-  public Yytoken yylex() throws java.io.IOException {
+  public Integer yylex() throws java.io.IOException {
     int zzInput;
     int zzAction;
 
@@ -648,235 +648,231 @@ class Yylex {
         case 1: 
           { 
           }
-        case 59: break;
+        case 58: break;
         case 2: 
-          { echoFinding(yytext(), "ADADSABET", "-");
+          { return YYParser.ADADSABET;
+          }
+        case 59: break;
+        case 3: 
+          { return YYParser.SINGLE_QUOTE_KW;
           }
         case 60: break;
-        case 3: 
-          { echoFinding(yytext(), "SINGLE_QUOTE_KW", "-");
+        case 4: 
+          { return YYParser.DIVIDE;
           }
         case 61: break;
-        case 4: 
-          { echoFinding(yytext(), "DOT_KW", "-");
+        case 5: 
+          { return YYParser.PLUS;
           }
         case 62: break;
-        case 5: 
-          { echoFinding(yytext(), "DIVIDE", "-");
+        case 6: 
+          { return YYParser.MINUS;
           }
         case 63: break;
-        case 6: 
-          { echoFinding(yytext(), "PLUS", "-");
+        case 7: 
+          { return YYParser.MULTP;
           }
         case 64: break;
-        case 7: 
-          { echoFinding(yytext(), "MINUS", "-");
+        case 8: 
+          { return YYParser.MOD;
           }
         case 65: break;
-        case 8: 
-          { echoFinding(yytext(), "MULTP", "-");
+        case 9: 
+          { return YYParser.SEMICOLON_KW;
           }
         case 66: break;
-        case 9: 
-          { echoFinding(yytext(), "MOD", "-");
+        case 10: 
+          { return YYParser.COLON_KW;
           }
         case 67: break;
-        case 10: 
-          { echoFinding(yytext(), "SEMICOLON_KW", "-");
+        case 11: 
+          { return YYParser.COMMA_KW;
           }
         case 68: break;
-        case 11: 
-          { echoFinding(yytext(), "COLON_KW", "-");
+        case 12: 
+          { return YYParser.LP_KW;
           }
         case 69: break;
-        case 12: 
-          { echoFinding(yytext(), "COMMA_KW", "-");
+        case 13: 
+          { return YYParser.RP_KW;
           }
         case 70: break;
-        case 13: 
-          { echoFinding(yytext(), "LP_KW", "-");
+        case 14: 
+          { return YYParser.BLOCK_START;
           }
         case 71: break;
-        case 14: 
-          { echoFinding(yytext(), "RP_KW", "-");
+        case 15: 
+          { return YYParser.BLOCK_END;
           }
         case 72: break;
-        case 15: 
-          { echoFinding(yytext(), "BLOCK_START", "-");
+        case 16: 
+          { return YYParser.RANGE_START;
           }
         case 73: break;
-        case 16: 
-          { echoFinding(yytext(), "BLOCK_END", "-");
+        case 17: 
+          { return YYParser.RANGE_END;
           }
         case 74: break;
-        case 17: 
-          { echoFinding(yytext(), "RANGE_START", "-");
+        case 18: 
+          { return YYParser.LT_KW;
           }
         case 75: break;
-        case 18: 
-          { echoFinding(yytext(), "RANGE_END", "-");
+        case 19: 
+          { return YYParser.GT_KW;
           }
         case 76: break;
-        case 19: 
-          { echoFinding(yytext(), "LT_KW", "-");
+        case 20: 
+          { return YYParser.EQ_KW;
           }
         case 77: break;
-        case 20: 
-          { echoFinding(yytext(), "GT_KW", "-");
+        case 21: 
+          { return YYParser.TWO_DOTS_KW;
           }
         case 78: break;
-        case 21: 
-          { echoFinding(yytext(), "EQ_KW", "-");
+        case 22: 
+          { return YYParser.COMMENTS;
           }
         case 79: break;
-        case 22: 
-          { echoFinding(yytext(), "TWO_DOTS_KW", "-");
+        case 23: 
+          { return YYParser.ASSIGN_KW;
           }
         case 80: break;
-        case 23: 
-          { echoFinding(yytext(), "COMMENTS", "-");
+        case 24: 
+          { return YYParser.NEQ_KW;
           }
         case 81: break;
-        case 24: 
-          { echoFinding(yytext(), "ASSIGN_KW", "-");
+        case 25: 
+          { return YYParser.LTE_KW;
           }
         case 82: break;
-        case 25: 
-          { echoFinding(yytext(), "NEQ_KW", "-");
+        case 26: 
+          { return YYParser.GTE_KW;
           }
         case 83: break;
-        case 26: 
-          { echoFinding(yytext(), "LTE_KW", "-");
+        case 27: 
+          { return YYParser.VA_KW;
           }
         case 84: break;
-        case 27: 
-          { echoFinding(yytext(), "GTE_KW", "-");
+        case 28: 
+          { return YYParser.DO_KW;
           }
         case 85: break;
-        case 28: 
-          { echoFinding(yytext(), "VA_KW", "-");
+        case 29: 
+          { return YYParser.YA_KW;
           }
         case 86: break;
-        case 29: 
-          { echoFinding(yytext(), "DO_KW", "-");
+        case 30: 
+          { return YYParser.REALCONST;
           }
         case 87: break;
-        case 30: 
-          { echoFinding(yytext(), "YA_KW", "-");
+        case 31: 
+          { return YYParser.HARF;
           }
         case 88: break;
-        case 31: 
-          { echoFinding(yytext(), "REALCONST", "-");
+        case 32: 
+          { return YYParser.END_KW;
           }
         case 89: break;
-        case 32: 
-          { echoFinding(yytext(), "HARF", "-");
+        case 33: 
+          { return YYParser.FOR_KW;
           }
         case 90: break;
-        case 33: 
-          { echoFinding(yytext(), "END_KW", "-");
+        case 34: 
+          { return YYParser.INT_KW;
           }
         case 91: break;
-        case 34: 
-          { echoFinding(yytext(), "FOR_KW", "-");
+        case 35: 
+          { return YYParser.BOOLSABET;
           }
         case 92: break;
-        case 35: 
-          { echoFinding(yytext(), "INT_KW", "-");
+        case 36: 
+          { return YYParser.UPTO_KW;
           }
         case 93: break;
-        case 36: 
-          { echoFinding(yytext(), "BOOLSABET", "-");
+        case 37: 
+          { return YYParser.EXIT_KW;
           }
         case 94: break;
-        case 37: 
-          { echoFinding(yytext(), "UPTO_KW", "-");
+        case 38: 
+          { return YYParser.AGAR_KW;
           }
         case 95: break;
-        case 38: 
-          { echoFinding(yytext(), "EXIT_KW", "-");
+        case 39: 
+          { return YYParser.CHAR_KW;
           }
         case 96: break;
-        case 39: 
-          { echoFinding(yytext(), "AGAR_KW", "-");
+        case 40: 
+          { return YYParser.MAIN_KW;
           }
         case 97: break;
-        case 40: 
-          { echoFinding(yytext(), "CHAR_KW", "-");
+        case 41: 
+          { return YYParser.WHEN_KW;
           }
         case 98: break;
-        case 41: 
-          { echoFinding(yytext(), "MAIN_KW", "-");
+        case 42: 
+          { return YYParser.RAVIE_KW;
           }
         case 99: break;
-        case 42: 
-          { echoFinding(yytext(), "WHEN_KW", "-");
+        case 43: 
+          { return YYParser.FLOAT_KW;
           }
         case 100: break;
-        case 43: 
-          { echoFinding(yytext(), "RAVIE_KW", "-");
+        case 44: 
+          { return YYParser.ANGAH_KW;
           }
         case 101: break;
-        case 44: 
-          { echoFinding(yytext(), "FLOAT_KW", "-");
+        case 45: 
+          { return YYParser.MORED_KW;
           }
         case 102: break;
-        case 45: 
-          { echoFinding(yytext(), "ANGAH_KW", "-");
+        case 46: 
+          { return YYParser.WHILE_KW;
           }
         case 103: break;
-        case 46: 
-          { echoFinding(yytext(), "MORED_KW", "-");
+        case 47: 
+          { return YYParser.SHENASE;
           }
         case 104: break;
-        case 47: 
-          { echoFinding(yytext(), "WHILE_KW", "-");
+        case 48: 
+          { return YYParser.NAGHIZ_KW;
           }
         case 105: break;
-        case 48: 
-          { echoFinding(yytext(), "SHENASE", ""+insertSymbol(yytext(), "SHENASE"));
+        case 49: 
+          { return YYParser.DOWNTO_KW;
           }
         case 106: break;
-        case 49: 
-          { echoFinding(yytext(), "NAGHIZ_KW", "-");
+        case 50: 
+          { return YYParser.BOOLEAN_KW;
           }
         case 107: break;
-        case 50: 
-          { echoFinding(yytext(), "DOWNTO_KW", "-");
+        case 51: 
+          { return YYParser.PROGRAM_KW;
           }
         case 108: break;
-        case 51: 
-          { echoFinding(yytext(), "BOOLEAN_KW", "-");
+        case 52: 
+          { return YYParser.VAGARNA_KW;
           }
         case 109: break;
-        case 52: 
-          { echoFinding(yytext(), "PROGRAM_KW", "-");
+        case 53: 
+          { return YYParser.DEFAULT_KW;
           }
         case 110: break;
-        case 53: 
-          { echoFinding(yytext(), "VAGARNA_KW", "-");
+        case 54: 
+          { return YYParser.BAZGASHT_KW;
           }
         case 111: break;
-        case 54: 
-          { echoFinding(yytext(), "DEFAULT_KW", "-");
+        case 55: 
+          { return YYParser.GOZINESH_KW;
           }
         case 112: break;
-        case 55: 
-          { echoFinding(yytext(), "BAZGASHT_KW", "-");
+        case 56: 
+          { return YYParser.VAANGAH_KW;
           }
         case 113: break;
-        case 56: 
-          { echoFinding(yytext(), "GOZINESH_KW", "-");
+        case 57: 
+          { return YYParser.YAVAGARNA_KW;
           }
         case 114: break;
-        case 57: 
-          { echoFinding(yytext(), "VAANGAH_KW", "-");
-          }
-        case 115: break;
-        case 58: 
-          { echoFinding(yytext(), "YAVAGARNA_KW", "-");
-          }
-        case 116: break;
         default: 
           if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
             zzAtEOF = true;

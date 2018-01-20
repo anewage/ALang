@@ -5,11 +5,11 @@ program #ex444
     float #rp234 := 1.1;
     boolean #bb212 := true;
     int #ar111[2] := {1, 7};
-    char #ch212[i..k] := {'c', 'd', '7'};
+    char #ch212[3..6] := {'c', 'd', '7'};
 
     ravie #fu555 (int #in111; boolean #wh121;) {
         int #mi111 := 2;
-        int #cd232 := (#in111, 3) +;
+        int #cd232 := 3
         {
             agar ((#wh121, true)va angah) angah bazgasht
             (#cd232,#mi111)+;

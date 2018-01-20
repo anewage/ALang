@@ -62,6 +62,8 @@
 %token RAVIE_KW
 %token NAGHIZ_KW
 %token BAZGASHT_KW
+%token SINGLE_QUOTE_KW
+%token COMMENTS
 
 %left YA_KW YAVAGARNA_KW
 %left VA_KW VAANGAH_KW
