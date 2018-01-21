@@ -3,5 +3,6 @@ A simple grammar implemented using Java, JFlex and YACC. This is the final proje
 
 Steps:
 1. Run JFlex tool (available in Tools) and give the `ALang.jflex` file as its input.
-2. Run Bison tool using the following command and generate the parser.
+2. Run Bison tool using the following command and generate the parser (`-v` is for debugging issues):
+  `bison.exe -L JAVA ../src/Ph2/ALang.yacc -v`
 3. Happy Parsing using the `parse()` metod!
