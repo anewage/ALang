@@ -4,3 +4,12 @@ out/
 src/Ph1/output.al
 src/lexemes.al
 src/Ph1/Yylex.java~
+Report.log
+Report.synctex.gz(busy)
+Report.synctex.gz
+Tools/ALang.cacc
+lexemes.al
+src/Ph2/Yylex.java~
+Report.out
+Report.toc
+Report.aux
